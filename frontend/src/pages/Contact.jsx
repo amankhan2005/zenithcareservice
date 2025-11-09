@@ -12,8 +12,9 @@ const SERVICE_OPTIONS = [
 const LEAD_SOURCES = ["Website", "Google Ads", "Facebook", "Referral", "Other"];
 const PREFERRED_CONTACTS = ["Call", "Email", "Text", "WhatsApp"];
 
-const HOSPITAL_ADDRESS = "314 W Lorraine Ave, Baltimore, MD 21211, USA";
-const HOSPITAL_MAP_LINK = "https://share.google/ICsmiZNVOyBs8Xco6";
+ const HOSPITAL_ADDRESS = "849 Fairmount Ave, Suite 200-T8, Towson, MD 21286, USA";
+const HOSPITAL_MAP_LINK = "https://maps.app.goo.gl/mJAD3RvRKdzWxgqU7";
+
 const CLINIC_PHONE = "(410) 905-5477";
 
 function getUtmFromUrl() {

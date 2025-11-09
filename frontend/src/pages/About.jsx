@@ -15,7 +15,6 @@ import ContactCTASection from "../components/ContactSection";
 import familyCard from "../assets/Home/EveryChild.webp"; // Importing local image
 import evidenceCard from "../assets/Home/evidence.webp";
 
-
 export default function About() {
   return (
     <div className="bg-white text-gray-800">
@@ -97,36 +96,36 @@ export default function About() {
             <div className="flex justify-center lg:justify-end relative">
               <div className="relative group">
                 {/* Main Image Container */}
-               <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] animate-fade-in-right">
-  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 via-transparent to-transparent z-10"></div>
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] animate-fade-in-right">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 via-transparent to-transparent z-10"></div>
 
-  {/* Imported image replaces the emoji/gradient box */}
-  <div className="w-full max-w-lg h-[650px] flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-    <img
-      src={familyCard}
-      alt="Family-Centered Care"
-      className="w-full h-full object-cover rounded-3xl"
-    />
-  </div>
+                  {/* Imported image replaces the emoji/gradient box */}
+                  <div className="w-full max-w-lg h-[650px] flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+                    <img
+                      src={familyCard}
+                      alt="Family-Centered Care"
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                  </div>
 
-  {/* Enhanced Floating Card */}
-  <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md p-5 rounded-2xl shadow-2xl z-20 border border-white/20 transform translate-y-0 group-hover:-translate-y-2 transition-all duration-500 animate-fade-in-up animation-delay-700">
-    <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
-        <FaHeart className="w-7 h-7 text-white" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="text-base font-bold text-gray-900 mb-1">
-          Compassionate Care
-        </div>
-        <div className="text-sm text-gray-600 leading-snug">
-          Individualized therapy plans designed for every child's unique journey
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+                  {/* Enhanced Floating Card */}
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md p-5 rounded-2xl shadow-2xl z-20 border border-white/20 transform translate-y-0 group-hover:-translate-y-2 transition-all duration-500 animate-fade-in-up animation-delay-700">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+                        <FaHeart className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-base font-bold text-gray-900 mb-1">
+                          Compassionate Care
+                        </div>
+                        <div className="text-sm text-gray-600 leading-snug">
+                          Individualized therapy plans designed for every
+                          child's unique journey
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Decorative Corner Accents */}
                 <div className="absolute -top-4 -right-4 w-24 h-24 border-4 border-orange-200 rounded-3xl -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2 animate-pulse-slow animation-delay-1000"></div>
@@ -218,44 +217,43 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left Image - Enhanced */}
-           <div className="flex justify-center lg:justify-start relative">
-  <div className="relative group">
-    <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] animate-fade-in-left">
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 via-transparent to-transparent z-10"></div>
+            <div className="flex justify-center lg:justify-start relative">
+              <div className="relative group">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] animate-fade-in-left">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 via-transparent to-transparent z-10"></div>
 
-      {/* ✅ Imported image replaces emoji/gradient box */}
-      <div className="w-full max-w-lg h-[650px] flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-        <img
-          src={evidenceCard}
-          alt="Evidence-Based"
-          className="w-full h-full object-cover rounded-3xl"
-        />
-      </div>
+                  {/* ✅ Imported image replaces emoji/gradient box */}
+                  <div className="w-full max-w-lg h-[650px] flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+                    <img
+                      src={evidenceCard}
+                      alt="Evidence-Based"
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                  </div>
 
-      {/* Floating Card (unchanged) */}
-      <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md p-5 rounded-2xl shadow-2xl z-20 border border-white/20 transform translate-y-0 group-hover:-translate-y-2 transition-all duration-500 animate-fade-in-up animation-delay-700">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
-            <FaBrain className="w-7 h-7 text-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-base font-bold text-gray-900 mb-1">
-              Proven Methods
+                  {/* Floating Card (unchanged) */}
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md p-5 rounded-2xl shadow-2xl z-20 border border-white/20 transform translate-y-0 group-hover:-translate-y-2 transition-all duration-500 animate-fade-in-up animation-delay-700">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+                        <FaBrain className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-base font-bold text-gray-900 mb-1">
+                          Proven Methods
+                        </div>
+                        <div className="text-sm text-gray-600 leading-snug">
+                          Latest research combined with compassionate care
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative Corner Accents */}
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-orange-200 rounded-3xl -z-10 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2 animate-pulse-slow animation-delay-1000"></div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-4 border-amber-200 rounded-3xl -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 animate-pulse-slow animation-delay-1500"></div>
+              </div>
             </div>
-            <div className="text-sm text-gray-600 leading-snug">
-              Latest research combined with compassionate care
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Decorative Corner Accents */}
-    <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-orange-200 rounded-3xl -z-10 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2 animate-pulse-slow animation-delay-1000"></div>
-    <div className="absolute -bottom-4 -right-4 w-24 h-24 border-4 border-amber-200 rounded-3xl -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 animate-pulse-slow animation-delay-1500"></div>
-  </div>
-</div>
-
 
             {/* Right Content - Enhanced */}
             <div className="space-y-8 relative z-10">
@@ -315,7 +313,7 @@ export default function About() {
             <iframe
               title="Autism ABA Partners Location"
               src={`https://www.google.com/maps?q=${encodeURIComponent(
-                "314 W Lorraine Ave, Baltimore, MD 21211"
+                "849 Fairmount Ave, Suite 200-T8, Towson, MD 21286"
               )}&z=13&output=embed`}
               width="100%"
               height="450"

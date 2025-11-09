@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -91,11 +91,16 @@ export default function Footer() {
             <ul className="mt-4 space-y-4 text-gray-300 text-sm">
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-orange-400 mt-1" aria-hidden />
-                <span>
-                  314 W Lorraine Ave,
+                <a
+                  href="https://maps.google.com/?q=849+Fairmount+Ave,+Suite+200-T8,+Towson,+MD+21286"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  849 Fairmount Ave, Suite
                   <br />
-                  Baltimore, MD 21211, USA
-                </span>
+                 200-T8 Towson, MD 21286, USA
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-orange-400" aria-hidden />
