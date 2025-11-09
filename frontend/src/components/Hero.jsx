@@ -58,7 +58,7 @@ export default function Hero() {
               />
 
               {/* ✅ Add a soft black backdrop overlay */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              <div className="absolute inset-0 bg-black/30"></div>
             </div>
           );
         })}

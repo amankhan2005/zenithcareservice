@@ -31,26 +31,53 @@ app.use(limiter);
 
 // ---------------------- CORS SETUP ----------------------
 const allowedOrigins = [
-  'http://localhost:5173', 
+  'http://localhost:5173',
+  'https://autismpartner.netlify.app',
   ...(process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',').map((u) => u.trim())
     : []),
 ].filter(Boolean);
 
+// Primary CORS middleware (safe origin-checking)
 app.use(
   cors({
     origin: (origin, callback) => {
-      // allow requests with no origin (like mobile apps or curl)
+      // allow requests with no origin (like curl, mobile apps, server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Don't throw — respond as "not allowed" so middleware returns no CORS headers
       console.warn(`❌ CORS blocked request from: ${origin}`);
-      return callback(new Error('CORS policy: origin not allowed'));
+      return callback(null, false);
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+      'Referer',
+      'Cache-Control',
+    ],
     credentials: true,
+    optionsSuccessStatus: 204,
   })
 );
+
+// Ensure preflight OPTIONS requests are handled and return CORS headers
+app.options('*', cors()); // important for explicit preflight handling
+
+// Debugging helper (temporary) to inspect preflight/headers — remove in production if verbose
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    console.log('🚦 OPTIONS preflight:', { origin: req.headers.origin, path: req.path });
+  }
+  next();
+});
 
 // Body parser
 app.use(express.json({ limit: '10kb' }));
@@ -107,6 +134,10 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error('Unhandled Error:', err?.message || err);
   const status = err.status || 500;
+  // If the error is a CORS "origin not allowed" (callback returned false), send 403
+  if (err && err.message && err.message.toLowerCase().includes('cors')) {
+    return res.status(403).json({ ok: false, message: 'CORS policy: origin not allowed' });
+  }
   res.status(status).json({ ok: false, message: err.message || 'Internal Server Error' });
 });
 
