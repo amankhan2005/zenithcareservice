@@ -4,10 +4,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
+import { SettingsProvider } from "./context/SettingsContext";  // ⭐ IMPORTANT
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+
+    {/* ⭐⭐ PROVIDER MUST WRAP EVERYTHING ⭐⭐ */}
+    <SettingsProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SettingsProvider>
+
   </React.StrictMode>
 );

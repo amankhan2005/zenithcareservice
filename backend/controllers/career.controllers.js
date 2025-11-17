@@ -1,155 +1,232 @@
- import dotenv from "dotenv";
+ // src/controllers/career.controllers.js
+import dotenv from "dotenv";
 dotenv.config();
 
 import nodemailer from "nodemailer";
 import fs from "fs";
+import path from "path";
+import Application from "../models/Application.models.js";
+
+/* ------------------ VALIDATIONS ------------------ */
+const isValidEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || ""));
+const isValidPhone = (s) => /^[0-9]{7,15}$/.test(String(s || ""));
 
 /* ------------------ EMAIL CONFIG ------------------ */
-if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_EMAIL_PASSWORD) {
-  console.error("❌ Missing Gmail credentials. Please set ADMIN_EMAIL and ADMIN_EMAIL_PASSWORD in .env");
-  throw new Error("Email configuration missing");
-}
-
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  pool: true,
-  maxConnections: 5,
   auth: {
     user: process.env.ADMIN_EMAIL,
     pass: process.env.ADMIN_EMAIL_PASSWORD,
   },
-  tls: { rejectUnauthorized: false },
 });
-
-/* ------------------ VALIDATORS ------------------ */
-const isValidEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
-const isValidPhone = (s) => /^[0-9]{7,15}$/.test(String(s || "").trim());
 
 /* ------------------ EMAIL TEMPLATES ------------------ */
 const emailWrapper = (content) => `
   <div style="background:#f9fafb;padding:40px 0;font-family:'Segoe UI',Arial,sans-serif;">
-    <table align="center" width="600" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.08);">
-      <tr>
-        <td style="background:#ff7f00;padding:16px 32px;text-align:center;">
-          <h2 style="color:#fff;margin:0;font-size:22px;letter-spacing:0.5px;">Autism ABA Partners</h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:32px 40px;">
-          ${content}
-        </td>
-      </tr>
-      <tr>
-        <td style="background:#f3f4f6;padding:16px 32px;text-align:center;color:#6b7280;font-size:13px;">
-          &copy; ${new Date().getFullYear()} Autism ABA Partners. All rights reserved.<br/>
-          <span>849 Fairmount Ave, Suite 200-T8, Towson, MD 21286</span>
-        </td>
-      </tr>
+    <table width="600" align="center" style="background:#fff;border-radius:12px;overflow:hidden;">
+      <tr><td style="background:#f97316;padding:16px;text-align:center;color:#fff;font-size:22px;">Autism ABA Partners</td></tr>
+      <tr><td style="padding:32px;">${content}</td></tr>
     </table>
   </div>
 `;
 
 const adminEmailTemplate = (data) =>
   emailWrapper(`
-    <h3 style="color:#111827;margin-bottom:12px;">📩 New Career Application Received</h3>
-    <p style="color:#374151;font-size:15px;">A new applicant has submitted their career form on the website. Details are below:</p>
-    <table style="width:100%;margin-top:16px;border-collapse:collapse;">
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Full Name:</strong></td><td>${data.fullName}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Email:</strong></td><td>${data.email}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Phone:</strong></td><td>${data.phone}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>City:</strong></td><td>${data.city || "-"}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>State:</strong></td><td>${data.state || "-"}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Zip Code:</strong></td><td>${data.zip || "-"}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Credentialing Status:</strong></td><td>${data.credential}</td></tr>
-      <tr><td style="padding:8px 0;color:#111827;"><strong>Interested In:</strong></td><td>${data.interested}</td></tr>
-    </table>
-    <p style="margin-top:24px;font-size:14px;color:#6b7280;">Submitted on: 
-      <strong>${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</strong>
-    </p>
+    <h3>New Application Received</h3>
+    <p><strong>Name:</strong> ${data.fullName}</p>
+    <p><strong>Email:</strong> ${data.email}</p>
+    <p><strong>Phone:</strong> ${data.phone}</p>
+    <p><strong>City:</strong> ${data.city}</p>
+    <p><strong>State:</strong> ${data.state}</p>
+    <p><strong>Zip:</strong> ${data.zip}</p>
+    <p><strong>Credential:</strong> ${data.credential}</p>
+    <p><strong>Interested In:</strong> ${data.interested}</p>
   `);
 
 const applicantEmailTemplate = (data) =>
   emailWrapper(`
-    <h3 style="color:#111827;margin-bottom:12px;">Thank You for Applying, ${data.fullName}!</h3>
-    <p style="color:#374151;font-size:15px;line-height:1.6;">
-      We’ve received your application at <strong>Autism ABA Partners</strong>.
-      Our HR team will review your details and contact you soon if you’re shortlisted.
-    </p>
-    <div style="background:#fff4e6;border-left:4px solid #ff7f00;padding:12px 16px;margin-top:20px;border-radius:8px;">
-      <p style="margin:0;color:#7c2d12;font-size:14px;">
-        Please ensure your contact details are correct. You may also reply to this email for follow-up queries.
-      </p>
-    </div>
-    <p style="margin-top:24px;color:#6b7280;font-size:14px;">Warm regards,<br/><strong>Autism ABA Partners HR Team</strong></p>
+    <h3>Thank you for applying, ${data.fullName}!</h3>
+    <p>Your application has been received and is under review.</p>
   `);
 
-/* ------------------ MAIN CONTROLLER ------------------ */
+/* ------------------ CONTROLLERS ------------------ */
+
+/**
+ * POST /api/career/apply
+ * Handles form submit with resume upload (req.file)
+ */
 export const applyCareerForm = async (req, res) => {
   try {
     const { fullName, email, phone, zip, city, state, credential, interested } = req.body;
     const file = req.file;
 
+    // validations
     if (!fullName || !email || !phone)
-      return res.status(400).json({ message: "Full name, email, and phone are required." });
+      return res.status(400).json({ message: "Full Name, Email, Phone are required." });
 
-    if (!isValidEmail(email))
-      return res.status(400).json({ message: "Invalid email format." });
+    if (!isValidEmail(email)) return res.status(400).json({ message: "Invalid email." });
+    if (!isValidPhone(phone)) return res.status(400).json({ message: "Invalid phone number." });
+    if (!file) return res.status(400).json({ message: "Resume file is required." });
 
-    if (!isValidPhone(phone))
-      return res.status(400).json({ message: "Invalid phone number." });
+    // ---------------- SAVE TO DATABASE ----------------
+    const newEntry = await Application.create({
+      fullName,
+      email,
+      phone,
+      zip: zip || "",
+      city: city || "",
+      state: state || "",
+      credential: credential || "",
+      interested: interested || "",
+      resume: {
+        path: file.path,
+        originalName: file.originalname,
+        mimeType: file.mimetype,
+        size: file.size,
+      },
+      metadata: {
+        ip: req.ip,
+        userAgent: req.get("User-Agent"),
+      },
+    });
 
-    if (!file)
-      return res.status(400).json({ message: "Resume file is required." });
+    console.log("💾 Saved application:", newEntry._id);
 
-    // ✅ Instant frontend response
-    res.status(200).json({ success: true, message: "Application submitted successfully." });
+    // RESPONSE TO FRONTEND (INSTANT)
+    res.status(200).json({ success: true, message: "Application submitted.", id: newEntry._id });
 
-    // ✅ Multiple HR/receiver emails supported (comma-separated)
-    const hrRecipients = (process.env.RECEIVER_EMAIL || process.env.ADMIN_EMAIL)
+    // ---------------- EMAILS (BACKGROUND) ----------------
+    const hrRecipients = (process.env.RECEIVER_EMAIL || process.env.ADMIN_EMAIL || "")
       .split(",")
-      .map((e) => e.trim());
+      .map((e) => e.trim())
+      .filter(Boolean);
 
-    // ✅ Prepare admin mail
     const adminMail = {
-      from: `"Autism ABA Partners" <${process.env.ADMIN_EMAIL}>`,
-      to: hrRecipients,
-      cc: process.env.ADMIN_EMAIL, // send a copy to admin account
-      subject: `New Application - ${fullName}`,
+      from: process.env.ADMIN_EMAIL,
+      to: hrRecipients.length ? hrRecipients : process.env.ADMIN_EMAIL,
+      subject: `New Application – ${fullName}`,
       html: adminEmailTemplate({ fullName, email, phone, zip, city, state, credential, interested }),
-      attachments: [{ filename: file.originalname, path: file.path }],
+      attachments: [
+        {
+          filename: file.originalname,
+          path: file.path,
+        },
+      ],
     };
 
-    // ✅ Applicant mail
     const applicantMail = {
-      from: `"Autism ABA Partners" <${process.env.ADMIN_EMAIL}>`,
+      from: process.env.ADMIN_EMAIL,
       to: email,
-      subject: "We’ve received your application!",
+      subject: "Your Application Was Received",
       html: applicantEmailTemplate({ fullName }),
     };
 
-    console.log("📨 Sending Admin Email To:", hrRecipients.join(", "));
-    console.log("📬 Sending Applicant Email To:", email);
-
-    // 🚀 Send both emails in background (parallel)
     Promise.all([
-      transporter.sendMail(adminMail).then(() => console.log("✅ Admin mail sent")),
-      transporter.sendMail(applicantMail).then(() => console.log("✅ Applicant mail sent")),
+      transporter.sendMail(adminMail),
+      transporter.sendMail(applicantMail),
     ])
       .then(() => {
-        if (file?.path && fs.existsSync(file.path)) {
-          fs.unlink(file.path, (err) =>
-            err
-              ? console.error("⚠️ Resume cleanup error:", err)
-              : console.log("🗑️ Deleted uploaded resume:", file.path)
-          );
+        console.log("📧 Emails sent successfully.");
+
+        // delete resume file after emails sent (optional)
+        try {
+          if (fs.existsSync(file.path)) fs.unlinkSync(file.path);
+        } catch (e) {
+          console.warn("Could not unlink resume file:", e.message);
         }
       })
-      .catch((err) => console.error("⚠️ Email send error:", err.message));
+      .catch((err) => {
+        console.error("Email send error:", err?.message || err);
+      });
+  } catch (err) {
+    console.error("Error in applyCareerForm:", err);
+    if (!res.headersSent) res.status(500).json({ message: "Something went wrong", error: err.message });
+  }
+};
 
-  } catch (error) {
-    console.error("Career form error:", error);
-    if (!res.headersSent) {
-      res.status(500).json({ success: false, message: "Failed to send application.", error: error.message });
+/**
+ * GET /api/career/list
+ * Admin-only. Returns all applications (most recent first)
+ */
+export const listApplications = async (req, res) => {
+  try {
+    const apps = await Application.find().sort({ createdAt: -1 }).lean();
+
+    const safe = apps.map((a) => ({
+      _id: a._id,
+      fullName: a.fullName,
+      email: a.email,
+      phone: a.phone,
+      city: a.city,
+      state: a.state,
+      zip: a.zip,
+      credential: a.credential,
+      interested: a.interested,
+      resume: a.resume, // { path, originalName, mimeType, size }
+      metadata: a.metadata,
+      createdAt: a.createdAt,
+      updatedAt: a.updatedAt,
+    }));
+
+    res.status(200).json({ success: true, applications: safe });
+  } catch (err) {
+    console.error("Error in listApplications:", err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+/**
+ * DELETE /api/career/delete/:id
+ * Admin-only. Deletes application and its resume file.
+ */
+export const deleteApplication = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const app = await Application.findById(id);
+    if (!app) return res.status(404).json({ success: false, message: "Application not found" });
+
+    // delete resume file if exists
+    if (app.resume?.path && fs.existsSync(app.resume.path)) {
+      try {
+        fs.unlinkSync(app.resume.path);
+      } catch (e) {
+        console.warn("Failed to unlink resume file:", e.message);
+      }
     }
+
+    await Application.findByIdAndDelete(id);
+    res.status(200).json({ success: true, message: "Application deleted" });
+  } catch (err) {
+    console.error("Error in deleteApplication:", err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+/**
+ * GET /api/career/download/:id
+ * Admin-only. Streams resume file as attachment (original filename).
+ */
+export const downloadResume = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const app = await Application.findById(id).lean();
+    if (!app || !app.resume?.path) return res.status(404).json({ success: false, message: "File not found" });
+
+    const filePath = app.resume.path;
+    const filename = app.resume.originalName || path.basename(filePath);
+
+    // secure check: ensure file is inside uploads folder
+    const uploadsRoot = path.join(process.cwd(), "uploads");
+    const resolved = path.resolve(filePath);
+    if (!resolved.startsWith(uploadsRoot)) {
+      return res.status(400).json({ success: false, message: "Invalid file path" });
+    }
+
+    if (!fs.existsSync(filePath)) return res.status(404).json({ success: false, message: "File not found on disk" });
+
+    return res.download(filePath, filename);
+  } catch (err) {
+    console.error("Error in downloadResume:", err);
+    res.status(500).json({ success: false, message: err.message });
   }
 };

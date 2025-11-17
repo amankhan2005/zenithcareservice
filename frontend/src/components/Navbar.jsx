@@ -1,11 +1,33 @@
- import React, { useState, useEffect } from "react";
+ // src/components/MainNavbar.jsx
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaPhoneAlt, FaEnvelopeOpenText } from "react-icons/fa";
-import logo from "../assets/autism-logo.webp";
+import fallbackLogo from "../assets/autism-logo.webp";
+import { useSettings } from "../context/SettingsContext";
 
 export default function MainNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { settings } = useSettings();
+
+  // build backend-prefixed url when needed
+  const backend = (import.meta.env.VITE_BACKEND_URL || "").replace(/\/$/, "");
+
+  // --- DYNAMIC VALUES (only these changed) ---
+  const logoRaw = settings?.logo || "";
+  const logoSrc = logoRaw
+    ? logoRaw.startsWith("http")
+      ? logoRaw
+      : `${backend}${logoRaw}`
+    : fallbackLogo;
+
+  const phoneRaw = settings?.phone || "(410) 905-5477";
+  // create tel-friendly number (only digits + plus)
+  const phoneTel = phoneRaw.replace(/[^+\d]/g, "");
+
+  const emailRaw = settings?.email || "info@autismabapartners.com";
+
+  // ------------------------------------------------
 
   // Handle scroll effect
   useEffect(() => {
@@ -58,7 +80,7 @@ export default function MainNavbar() {
               className="flex items-center transform hover:scale-105 transition-transform duration-300"
             >
               <img
-                src={logo}
+                src={logoSrc}
                 alt="Autism ABA Partners logo"
                 className={`object-contain transition-all duration-300 ${
                   scrolled ? "h-16" : "h-20"
@@ -69,20 +91,20 @@ export default function MainNavbar() {
             {/* MOBILE ONLY: phone + email next to logo */}
             <div className="flex-col items-start gap-0 lg:hidden">
               <a
-                href="tel:4109055477"
+                href={`tel:${phoneTel}`}
                 className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] no-underline"
                 aria-label="Call Autism ABA Partners"
               >
                 <FaPhoneAlt className="w-4 h-4 text-[#2E7D32]" />
-                <span className="text-xs">(410) 905-5477</span>
+                <span className="text-xs">{phoneRaw}</span>
               </a>
               <a
-                href="mailto:info@autismabapartners.com"
+                href={`mailto:${emailRaw}`}
                 className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] no-underline mt-0.5"
                 aria-label="Email Autism ABA Partners"
               >
                 <FaEnvelopeOpenText className="w-4 h-4 text-[#F57C00]" />
-                <span className="text-xs">info@autismabapartners.com</span>
+                <span className="text-xs">{emailRaw}</span>
               </a>
             </div>
           </div>

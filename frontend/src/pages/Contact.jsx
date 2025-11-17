@@ -1,5 +1,7 @@
+ // src/components/ContactForm.jsx
 import React, { useEffect, useState } from "react";
 import { Phone, Mail, MapPin, Clock, CheckCircle, Heart } from "lucide-react";
+import { useSettings } from "../context/SettingsContext";
 
 const SERVICE_OPTIONS = [
   "ABA Therapy",
@@ -11,11 +13,6 @@ const SERVICE_OPTIONS = [
 
 const LEAD_SOURCES = ["Website", "Google Ads", "Facebook", "Referral", "Other"];
 const PREFERRED_CONTACTS = ["Call", "Email", "Text", "WhatsApp"];
-
- const HOSPITAL_ADDRESS = "849 Fairmount Ave, Suite 200-T8, Towson, MD 21286, USA";
-const HOSPITAL_MAP_LINK = "https://maps.app.goo.gl/mJAD3RvRKdzWxgqU7";
-
-const CLINIC_PHONE = "(410) 905-5477";
 
 function getUtmFromUrl() {
   try {
@@ -30,6 +27,7 @@ function getUtmFromUrl() {
 }
 
 export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
+  const { settings } = useSettings();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL?.trim() || "";
 
   function buildEndpoint(ep) {
@@ -43,6 +41,19 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
 
   const finalEndpoint = buildEndpoint(apiEndpoint);
   console.log("ContactForm will POST to:", finalEndpoint);
+
+  // --- Dynamic contact values from settings (safely fallback to hardcoded originals) ---
+  const defaultAddress =
+    "849 Fairmount Ave, Suite 200-T8, Towson, MD 21286, USA";
+  const defaultPhone = "(410) 905-5477";
+  const defaultEmail = "info@autismabapartners.com";
+
+  const HOSPITAL_ADDRESS = (settings && settings.address) || defaultAddress;
+  const CLINIC_PHONE = (settings && settings.phone) || defaultPhone;
+  const CONTACT_EMAIL = (settings && settings.email) || defaultEmail;
+  const HOSPITAL_MAP_LINK =
+    (settings && settings.mapLink) ||
+    `https://maps.google.com/?q=${encodeURIComponent(HOSPITAL_ADDRESS)}`;
 
   const [form, setForm] = useState({
     parentName: "",
@@ -185,6 +196,7 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
     setServerError("");
   }
 
+  // ---------- RENDER (unchanged form markup except dynamic contact values) ----------
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -212,9 +224,7 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
-                  <p className="text-gray-600 text-sm">
-                    Available Mon-Fri, 8am-6pm
-                  </p>
+                  <p className="text-gray-600 text-sm">Available Mon-Fri, 8am-6pm</p>
                   <p className="text-orange-600 font-semibold mt-2">
                     <a
                       href={`tel:${CLINIC_PHONE.replace(/[^\d+]/g, "")}`}
@@ -234,14 +244,12 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
-                  <p className="text-gray-600 text-sm">
-                    We respond within 24 hours
-                  </p>
+                  <p className="text-gray-600 text-sm">We respond within 24 hours</p>
                   <a
-                    href="mailto:info@autismabapartners.com"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="text-amber-600 font-semibold mt-2 inline-block hover:underline"
                   >
-                    info@autismabapartners.com
+                    {CONTACT_EMAIL}
                   </a>
                 </div>
               </div>
@@ -253,22 +261,11 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
                   <MapPin className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
-                  <h3 className="font-semibold  text-gray-900 mb-1">
-                    Visit Us
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Our Baltimore location
-                  </p>
-                  <a
-                    href="https://share.google/ICsmiZNVOyBs8Xco6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <p className="text-orange-500 font-semibold mt-2">
-                      {HOSPITAL_ADDRESS}
-                    </p>
+                  <h3 className="font-semibold  text-gray-900 mb-1">Visit Us</h3>
+                  <p className="text-gray-600 text-sm">Our Baltimore location</p>
+                  <a href={HOSPITAL_MAP_LINK} target="_blank" rel="noopener noreferrer">
+                    <p className="text-orange-500 font-semibold mt-2">{HOSPITAL_ADDRESS}</p>
                   </a>
-
                   <p className="mt-2"></p>
                 </div>
               </div>
@@ -287,7 +284,7 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
             </div>
           </div>
 
-          {/* Form Section */}
+          {/* Form Section (unchanged) */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-2xl p-8 border-t-4 border-orange-500">
               {success === true && (
@@ -644,7 +641,7 @@ export default function ContactForm({ apiEndpoint = "/api/contact/save" }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }

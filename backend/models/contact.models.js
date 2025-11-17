@@ -1,4 +1,4 @@
- // contactSchema.js
+ // models/contact.models.js
 // Mongoose schema for Contact / Lead submissions (USA Autism ABA Clinic)
 
 import mongoose from "mongoose";
@@ -6,54 +6,21 @@ import mongoose from "mongoose";
 const contactSchema = new mongoose.Schema(
   {
     // 🧩 Parent / Guardian Info
-    parentName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      lowercase: true,
-      trim: true,
-    },
-    phone: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    parentName: { type: String, required: true, trim: true },
+    email: { type: String, required: true, lowercase: true, trim: true },
+    phone: { type: String, required: true, trim: true },
 
     // 👶 Child / Client Info
-    childName: {
-      type: String,
-      trim: true,
-    },
-    childAge: {
-      type: Number,
-      min: 0,
-      max: 25,
-    },
+    childName: { type: String, trim: true },
+    childAge: { type: Number, min: 0, max: 25 },
 
-    // 📍 Location Info (important for U.S. clinics)
-    city: {
-      type: String,
-      trim: true,
-    },
-    state: {
-      type: String,
-      trim: true,
-    },
-    zipCode: {
-      type: String,
-      trim: true,
-    },
+    // 📍 Location Info
+    city: { type: String, trim: true },
+    state: { type: String, trim: true },
+    zipCode: { type: String, trim: true },
 
     // 💬 Inquiry Details
-    message: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    message: { type: String, required: true, trim: true },
     serviceInterest: {
       type: String,
       enum: [
@@ -65,17 +32,12 @@ const contactSchema = new mongoose.Schema(
       ],
       default: "ABA Therapy",
     },
-
     preferredContact: {
       type: String,
       enum: ["Call", "Email", "Text", "WhatsApp"],
       default: "Call",
     },
-
-    bestTimeToReach: {
-      type: String,
-      trim: true,
-    },
+    bestTimeToReach: { type: String, trim: true },
 
     // 📊 Marketing & Source Tracking
     leadSource: {
@@ -89,11 +51,8 @@ const contactSchema = new mongoose.Schema(
       source: String,
     },
 
-    // 🧠 Internal Use (admin / therapist)
-    assignedStaff: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+    // 🧠 Internal (admin / therapist)
+    assignedStaff: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
     status: {
       type: String,
       enum: ["new", "contacted", "in-progress", "closed"],
@@ -104,10 +63,19 @@ const contactSchema = new mongoose.Schema(
     ipAddress: String,
     userAgent: String,
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
+
+// Indexes for fast admin queries/search
+contactSchema.index({ createdAt: -1 });
+contactSchema.index({
+  parentName: "text",
+  email: "text",
+  phone: "text",
+  message: "text",
+  city: "text",
+  state: "text",
+});
 
 export default mongoose.models.ContactLead ||
   mongoose.model("ContactLead", contactSchema);
