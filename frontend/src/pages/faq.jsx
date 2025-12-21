@@ -1,59 +1,56 @@
  import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import ContactCTASection from "../components/ContactSection";
-// Placeholder Contact Section
+import { ChevronDown } from "lucide-react";
  
-
 export default function FAQ() {
   const faqs = [
     {
-      q: "What is Autism Spectrum Disorder (ASD)?",
-      a: "Autism Spectrum Disorder (ASD) is a developmental condition that affects communication, behavior, and social interaction. It can appear differently in each child.",
+      q: "What is ABA?",
+      a: "Applied Behavior Analysis (ABA) is a scientific, evidence-based approach that focuses on understanding and improving behavior. ABA uses positive reinforcement and structured strategies to help children develop communication, social, academic, and daily living skills."
     },
     {
-      q: "What is ABA Therapy and how does it help children with autism?",
-      a: "ABA (Applied Behavior Analysis) Therapy helps children with autism learn communication, social, and life skills using positive reinforcement techniques.",
+      q: "What is the purpose of the ABA program?",
+      a: "The purpose of the ABA program is to help children with autism build meaningful skills that increase independence, improve quality of life, and support successful participation in daily routines at home, school, and in the community."
+    },
+    {
+      q: "What is telemedicine?",
+      a: "Telemedicine is the delivery of healthcare services using secure video and digital platforms. It allows families to receive professional guidance, training, and support remotely when appropriate."
+    },
+    {
+      q: "Which services may be provided via telemedicine?",
+      a: "Telemedicine may be used for parent training, caregiver coaching, consultations, treatment planning, and certain follow-up services when clinically appropriate. In-person services are recommended when direct interaction is required."
+    },
+    {
+      q: "What is ASD?",
+      a: "Autism Spectrum Disorder (ASD) is a developmental condition that affects communication, social interaction, behavior, and learning. ASD presents differently in every child, which is why individualized treatment is essential."
+    },
+    {
+      q: "What ICD-10 codes are used for autism?",
+      a: "Autism Spectrum Disorder is commonly identified under ICD-10 code F84.0 and related diagnostic classifications, depending on clinical evaluation and individual presentation."
+    },
+    {
+      q: "What are common signs of autism?",
+      a: "Common signs of autism may include limited eye contact, delayed speech or communication, repetitive behaviors, difficulty with social interaction, sensory sensitivities, and challenges adapting to changes in routine."
     },
     {
       q: "At what age can autism be diagnosed?",
-      a: "Autism can often be diagnosed as early as 18 months, but signs can appear earlier. Early diagnosis helps in effective therapy and better outcomes.",
+      a: "Autism can often be identified as early as 18 to 24 months. Early diagnosis allows for early intervention services, which are associated with improved developmental outcomes."
     },
     {
-      q: "What are early signs of autism in toddlers?",
-      a: "Common early signs include lack of eye contact, delayed speech, repetitive behaviors, and limited interest in social play.",
+      q: "Do you provide services in the child’s natural environment?",
+      a: "Yes. DECODER Health provides home-based and community-based ABA services, allowing therapy to take place in environments where children naturally live, learn, and play."
     },
     {
-      q: "Can autism be cured?",
-      a: "Autism is not a disease and does not have a cure. However, therapies like ABA, speech, and occupational therapy can significantly improve quality of life.",
+      q: "How is DECODER Health’s approach different?",
+      a: "Our approach combines evidence-based ABA with cultural sensitivity, family collaboration, and real-world application. We design programs around a family’s routines, values, and priorities to support meaningful progress."
     },
     {
-      q: "How long does ABA therapy take to show results?",
-      a: "Progress varies by child, but consistent ABA therapy over several months often leads to visible improvements in behavior and communication.",
+      q: "Do parents and caregivers participate in therapy?",
+      a: "Yes. Parents and caregivers are essential partners in therapy. We provide guidance, training, and collaboration to help families reinforce skills outside of therapy sessions."
     },
     {
-      q: "Is ABA therapy suitable for all children with autism?",
-      a: "Yes, ABA therapy is personalized for each child's unique needs, age, and learning style, making it suitable for most children on the spectrum.",
-    },
-    {
-      q: "What role do parents play in autism therapy?",
-      a: "Parents play a crucial role by reinforcing learned behaviors at home and actively participating in their child's therapy sessions.",
-    },
-    {
-      q: "Does insurance cover ABA therapy?",
-      a: "Many insurance providers cover ABA therapy, but coverage varies. It's best to check with your provider or clinic for specific details.",
-    },
-    {
-      q: "What's the difference between autism and ADHD?",
-      a: "Autism primarily affects social and communication skills, while ADHD involves challenges with focus and hyperactivity. Some children may have both conditions.",
-    },
-    {
-      q: "Can children with autism attend regular schools?",
-      a: "Yes, many children with autism attend mainstream schools with individualized support plans to help them succeed academically and socially.",
-    },
-    {
-      q: "How can I support my child after an autism diagnosis?",
-      a: "Start early intervention therapy, connect with support groups, and maintain a structured, positive environment at home.",
-    },
+      q: "How do I get started with services?",
+      a: "You can contact DECODER Health directly to schedule an initial consultation. Our team will guide you through assessment, recommendations, and next steps with clarity and support."
+    }
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -63,28 +60,30 @@ export default function FAQ() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white text-gray-800">
-      {/* Hero Section */}
-      <section className="bg-orange-500 text-white text-center py-20 px-6">
+    <div className="bg-gradient-to-b from-[#F5F9FF] to-white text-[#0A2540]">
+
+      {/* ================= HERO ================= */}
+      <section className="bg-gradient-to-r from-[#0B5ED7] via-[#1E6EEB] to-[#3B82F6] text-white text-center py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Frequently Asked Questions
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-            Find answers to common questions about autism, ABA therapy, and how we support families on their journey.
+            Learn more about our ABA services, approach, and how DECODER Health
+            supports children and families.
           </p>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <main className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1E3D2F] mb-4">
-            Have Questions? We've Got Answers.
+      {/* ================= FAQ ================= */}
+      <main className="max-w-7xl mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Have Questions? We’re Here to Help.
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            Below are some of the most commonly asked questions from parents and caregivers.  
-            If you don't find your answer here, feel free to reach out — we're always happy to help!
+          <p className="text-[#5B6B82] text-lg max-w-3xl mx-auto leading-relaxed">
+            Below are answers to common questions about our services and
+            approach. If you need more information, feel free to reach out.
           </p>
         </div>
 
@@ -94,37 +93,50 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className={`bg-white rounded-2xl border-2 transition-all duration-300 ${
-                  isOpen 
-                    ? "border-orange-400 shadow-lg shadow-orange-100" 
-                    : "border-gray-200 shadow-md hover:border-orange-300 hover:shadow-lg"
+                className={`bg-white rounded-2xl border transition-all duration-300 ${
+                  isOpen
+                    ? "border-[#0B5ED7] shadow-[0_20px_40px_-15px_rgba(11,94,215,0.35)]"
+                    : "border-[#E5EEFF] hover:border-[#0B5ED7] hover:shadow-lg"
                 }`}
               >
                 <button
                   onClick={() => toggleIndex(index)}
                   className="w-full px-6 py-6 flex items-start justify-between text-left group"
                 >
-                  <h3 className={`text-lg font-semibold pr-4 transition-colors ${
-                    isOpen ? "text-orange-600" : "text-[#1E3D2F] group-hover:text-orange-600"
-                  }`}>
+                  <h3
+                    className={`text-lg font-semibold pr-4 transition-colors ${
+                      isOpen
+                        ? "text-[#0B5ED7]"
+                        : "text-[#0A2540] group-hover:text-[#0B5ED7]"
+                    }`}
+                  >
                     {item.q}
                   </h3>
-                  <span className={`ml-2 mt-1 flex-shrink-0 transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}>
-                    <ChevronDown className={`w-6 h-6 ${
-                      isOpen ? "text-orange-600" : "text-gray-400 group-hover:text-orange-500"
-                    }`} />
+
+                  <span
+                    className={`ml-2 mt-1 transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <ChevronDown
+                      className={`w-6 h-6 ${
+                        isOpen
+                          ? "text-[#0B5ED7]"
+                          : "text-gray-400 group-hover:text-[#0B5ED7]"
+                      }`}
+                    />
                   </span>
                 </button>
 
                 <div
-                  className={`px-6 transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-48 pb-6 opacity-100" : "max-h-0 opacity-0"
-                  } overflow-hidden`}
+                  className={`px-6 transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOpen ? "max-h-60 pb-6 opacity-100" : "max-h-0 opacity-0"
+                  }`}
                 >
-                  <div className="pt-2 border-t border-gray-100">
-                    <p className="text-gray-700 leading-relaxed">{item.a}</p>
+                  <div className="pt-4 border-t border-[#EEF4FF]">
+                    <p className="text-[#425466] leading-relaxed">
+                      {item.a}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -132,9 +144,7 @@ export default function FAQ() {
           })}
         </div>
       </main>
-
-      {/* CTA Section */}
-      <ContactCTASection />
+  
     </div>
   );
 }

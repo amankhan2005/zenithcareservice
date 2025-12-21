@@ -1,43 +1,52 @@
  import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AboutPreview() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#F5F9FF] via-white to-[#EEF4FF]">
-      
+
       {/* Soft background glow */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#0B5ED7]/10 rounded-full blur-[120px]" />
       <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-[#0B5ED7]/10 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-16 lg:py-16">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 lg:py-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* LEFT CONTENT */}
-          <div>
-            <span className="inline-block mb-6 text-sm font-semibold text-[#0B5ED7] tracking-widest uppercase">
+          <div className="text-center lg:text-left">
+            <span className="inline-block mb-5 text-xs sm:text-sm font-semibold text-[#0B5ED7] tracking-widest uppercase">
               Compassionate ABA Care
             </span>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A2540] leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0A2540] leading-tight">
               Understanding your child’s needs through{" "}
               <span className="text-[#0B5ED7]">
                 evidence-based behavioral analysis
               </span>
             </h1>
 
-            <p className="mt-8 text-lg lg:text-xl text-gray-600 max-w-2xl leading-relaxed">
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               We provide personalized, culturally competent ABA therapy
               designed to support growth, confidence, and meaningful
               progress for every child and family.
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-5">
-              <button className="bg-[#0B5ED7] hover:bg-[#084298] text-white px-9 py-4 rounded-xl font-semibold shadow-lg transition">
+            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
+              <a
+                href="https://calendly.com/alasway/30min?month=2025-12"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-[#0B5ED7] hover:bg-[#084298] text-white px-9 py-4 rounded-xl font-semibold shadow-lg transition text-center"
+              >
                 Schedule a Consultation
-              </button>
+              </a>
 
-              <button className="bg-white text-[#0B5ED7] border border-[#0B5ED7]/30 hover:border-[#0B5ED7] px-9 py-4 rounded-xl font-semibold shadow-sm transition">
+              <Link
+                to="/about-us"
+                className="w-full sm:w-auto bg-white text-[#0B5ED7] border border-[#0B5ED7]/30 hover:border-[#0B5ED7] px-9 py-4 rounded-xl font-semibold shadow-sm transition text-center"
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -47,7 +56,12 @@ export default function AboutPreview() {
               <img
                 src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074"
                 alt="ABA therapist smiling in clinic"
-                className="rounded-[28px] w-120 max-w-xl object-cover"
+                className="
+                  rounded-[28px] 
+                  object-cover
+                  w-full max-w-sm sm:max-w-md
+                  lg:w-120 lg:max-w-xl
+                "
               />
             </div>
           </div>

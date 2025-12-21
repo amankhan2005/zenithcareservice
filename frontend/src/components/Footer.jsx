@@ -1,146 +1,188 @@
- // src/components/Footer.jsx
-import React from "react";
-import {
-  FaPhoneAlt,
-  FaEnvelope,
+ import {
+  FaPhone,
   FaMapMarkerAlt,
   FaFacebookF,
   FaInstagram,
   FaTwitter,
+  FaRegEnvelope, // ✅ WORKING MAIL ICON
 } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 
+import defaultLogo from "../assets/svgviewer-output.svg";
 import { useSettings } from "../context/SettingsContext";
-import autismLogo from "../assets/autism-logo.webp";
 
 export default function Footer() {
   const { settings } = useSettings();
-  if (!settings) return null;
 
-  const logoUrl = autismLogo;
+  // -------- STATIC LOGO --------
+  const logoUrl = defaultLogo;
 
-  const facebookUrl = settings.facebook || settings.fb || "";
-  const instagramUrl = settings.instagram || settings.ig || "";
-  const twitterUrl = settings.twitter || settings.x || settings.x_url || "";
-  const tiktokUrl = settings.tiktok || settings.tikTok || settings.tiktok_url || "";
+  // -------- DEFAULT VALUES --------
+  const defaultEmail = "info@pr5-heartsnetwork.com";
+  const defaultPhone = "+1 (443) 992-2299";
+  const defaultAddress = "4919 Harford Rd, Baltimore, MD 21214";
+  const defaultAddressLink = "https://maps.app.goo.gl/mBkEdBxhhbThS67q7";
+
+  const address = settings?.address || defaultAddress;
+  const addressLink = settings?.address
+    ? `https://maps.google.com/?q=${encodeURIComponent(settings.address)}`
+    : defaultAddressLink;
+
+  const phone = settings?.phone || defaultPhone;
+  const phoneHref = `tel:${phone.replace(/[^0-9+]/g, "")}`;
+
+  const email = settings?.email || defaultEmail;
+  const cleanedEmail = email.replace(/(<([^>]+)>)/gi, "").trim();
+
+  const facebook = settings?.facebook || settings?.fb || "";
+  const instagram = settings?.instagram || settings?.ig || "";
+  const twitter = settings?.twitter || settings?.x || settings?.x_url || "";
+  const tiktok =
+    settings?.tiktok || settings?.tikTok || settings?.tiktok_url || "";
 
   return (
-    <footer className="bg-gradient-to-b from-[#07251f] to-[#0f2b23] text-gray-100 pt-12 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start pb-10">
+    <footer className="bg-[#0B5ED7] text-white relative pt-24 pb-10">
 
-          {/* Column 1 - Logo */}
-          <div className="px-2 md:px-6 text-center md:text-left">
-            <div className="flex justify-center md:justify-start mb-4">
-              <div className="bg-white p-3 rounded-xl shadow-lg inline-block">
-                <img
-                  src={logoUrl}
-                  alt="Site Logo"
-                  className="w-36 h-auto object-contain"
-                />
-              </div>
-            </div>
+      {/* Top Accent */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-white/80" />
 
-            <p className="text-gray-300 text-sm leading-relaxed mt-4">
-              Empowering children through evidence-based ABA therapy and family support.
-            </p>
+      {/* MAIN GRID */}
+      <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-16">
+
+        {/* LOGO + TAGLINE */}
+        <div>
+          <div className="bg-white p-4 rounded-xl shadow-md inline-block mb-4">
+            <img src={logoUrl} alt="Footer Logo" className="w-32 h-auto" />
           </div>
 
-          {/* Column 2 */}
-          <div className="px-2 md:px-6">
-            <h4 className="text-lg font-semibold text-white mb-3 relative inline-block after:block after:w-12 after:h-1 after:bg-orange-400 after:rounded-sm after:mt-3">
-              Quick Links
-            </h4>
-            <ul className="mt-4 space-y-3 text-gray-300 text-sm">
-              <li><a href="/" className="hover:text-white hover:pl-2 transition-all block">Home</a></li>
-              <li><a href="/about-us" className="hover:text-white hover:pl-2 transition-all block">About Us</a></li>
-              <li><a href="/services" className="hover:text-white hover:pl-2 transition-all block">Services</a></li>
-              <li><a href="/contact-us" className="hover:text-white hover:pl-2 transition-all block">Contact</a></li>
-              <li><a href="/faq" className="hover:text-white hover:pl-2 transition-all block">FAQs</a></li>
-              <li><a href="/careers" className="hover:text-white hover:pl-2 transition-all block">Careers</a></li>
-            </ul>
-          </div>
-
-          {/* Column 3 */}
-          <address className="not-italic px-2 md:px-6">
-            <h4 className="text-lg font-semibold text-white mb-3 relative inline-block after:block after:w-12 after:h-1 after:bg-orange-400 after:rounded-sm after:mt-3">
-              Get in Touch
-            </h4>
-
-            <ul className="mt-4 space-y-4 text-gray-300 text-sm">
-              <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-orange-400 mt-1" />
-                <span>{settings.address || "No address available"}</span>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <FaPhoneAlt className="text-orange-400" />
-                <a href={`tel:${settings.phone || ""}`} className="hover:text-white">
-                  {settings.phone || "N/A"}
-                </a>
-              </li>
-
-              <li className="flex items-center gap-3">
-                <FaEnvelope className="text-orange-400" />
-                <a href={`mailto:${settings.email || ""}`} className="hover:text-white">
-                  {settings.email || "N/A"}
-                </a>
-              </li>
-            </ul>
-          </address>
-
-          {/* Column 4 */}
-          <div className="px-2 md:px-6">
-            <h4 className="text-lg font-semibold text-white mb-3 relative inline-block after:block after:w-12 after:h-1 after:bg-orange-400 after:rounded-sm after:mt-3">
-              Follow Us
-            </h4>
-
-            <p className="text-gray-300 text-sm mt-2 mb-4">
-              Join our community for tips, success stories, and event updates.
-            </p>
-
-            <div className="flex items-center gap-3">
-              {facebookUrl && (
-                <a href={facebookUrl} target="_blank" rel="noopener" className="p-2 bg-white/5 rounded-lg hover:bg-white/10">
-                  <FaFacebookF />
-                </a>
-              )}
-
-              {instagramUrl && (
-                <a href={instagramUrl} target="_blank" rel="noopener" className="p-2 bg-white/5 rounded-lg hover:bg-white/10">
-                  <FaInstagram />
-                </a>
-              )}
-
-              {twitterUrl && (
-                <a href={twitterUrl} target="_blank" rel="noopener" className="p-2 bg-white/5 rounded-lg hover:bg-white/10">
-                  <FaTwitter />
-                </a>
-              )}
-
-              {tiktokUrl && (
-                <a href={tiktokUrl} target="_blank" rel="noopener" className="p-2 bg-white/5 rounded-lg hover:bg-white/10">
-                  <SiTiktok />
-                </a>
-              )}
-            </div>
-          </div>
-
+          <p className="text-sm text-white/85 leading-relaxed">
+            Empowering children through evidence-based ABA therapy and family support.
+          </p>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-center gap-3 text-sm text-gray-400">
-          <div>© {new Date().getFullYear()} Autism ABA Partners. All Rights Reserved.</div>
-          <div>
-            Developed by{" "}
-            <a href="https://www.webieapp.com" className="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener">
-              WebieApp
-            </a>
-          </div>
+        {/* QUICK LINKS */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 relative inline-block after:block after:w-10 after:h-1 after:bg-white after:mt-2">
+            Quick Links
+          </h3>
+          <ul className="space-y-2 text-sm text-white/85">
+            <li><a href="/" className="hover:text-white">Home</a></li>
+            <li><a href="/about-us" className="hover:text-white">About Us</a></li>
+            <li><a href="/contact-us" className="hover:text-white">Contact</a></li>
+            <li><a href="/faq" className="hover:text-white">FAQs</a></li>
+          </ul>
         </div>
 
+        {/* SERVICES */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 relative inline-block after:block after:w-10 after:h-1 after:bg-white after:mt-2">
+            Services
+          </h3>
+          <ul className="space-y-2 text-sm text-white/85">
+            <li><a href="/services/rc" className="hover:text-white">Respite Care (RC)</a></li>
+            <li><a href="/services/iiss" className="hover:text-white">IISS</a></li>
+            <li><a href="/services/fc" className="hover:text-white">Family Consultation (FC)</a></li>
+          </ul>
+        </div>
+
+        {/* CONTACT */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 relative inline-block after:block after:w-10 after:h-1 after:bg-white after:mt-2">
+            Get in Touch
+          </h3>
+
+          <ul className="space-y-4 text-sm text-white/85">
+            <li className="flex gap-3">
+              <FaMapMarkerAlt className="text-white text-lg flex-shrink-0 mt-0.5" />
+              <a href={addressLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                {address}
+              </a>
+            </li>
+
+            <li className="flex gap-3">
+              <FaPhone className="text-white text-lg scale-x-[-1] flex-shrink-0" />
+              <a href={phoneHref} className="hover:text-white">
+                {phone}
+              </a>
+            </li>
+
+            <li className="flex gap-3">
+              <FaRegEnvelope className="text-white text-lg flex-shrink-0 mt-0.5" />
+              <a href={`mailto:${cleanedEmail}`} className="hover:text-white">
+                {cleanedEmail}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* SOCIAL */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 relative inline-block after:block after:w-10 after:h-1 after:bg-white after:mt-2">
+            Follow Us
+          </h3>
+
+          <p className="text-sm text-white/85 mb-4">
+            Join our community for tips, stories, and updates.
+          </p>
+
+          <div className="flex gap-3">
+            {facebook && (
+              <a
+                href={facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-md hover:bg-white hover:text-[#0B5ED7] transition"
+              >
+                <FaFacebookF />
+              </a>
+            )}
+            {instagram && (
+              <a
+                href={instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-md hover:bg-white hover:text-[#0B5ED7] transition"
+              >
+                <FaInstagram />
+              </a>
+            )}
+            {twitter && (
+              <a
+                href={twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-md hover:bg-white hover:text-[#0B5ED7] transition"
+              >
+                <FaTwitter />
+              </a>
+            )}
+            {tiktok && (
+              <a
+                href={tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-md hover:bg-white hover:text-[#0B5ED7] transition"
+              >
+                <SiTiktok />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* COPYRIGHT */}
+      <div className="border-t border-white/20 mt-16 pt-6 text-center text-sm text-white/70">
+        © {new Date().getFullYear()} Decoder Health. All Rights Reserved.{" "}
+        <br className="md:hidden" />
+        Developed by{" "}
+        <a
+          href="https://www.webieapp.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:opacity-90"
+        >
+          WebieApp
+        </a>
       </div>
     </footer>
   );
