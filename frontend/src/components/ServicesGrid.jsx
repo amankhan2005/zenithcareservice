@@ -5,6 +5,9 @@ import {
   FaSearch,
   FaTachometerAlt,
 } from "react-icons/fa";
+import doctorVideo from "../assets/videos/decoderHealth.mp4";
+import videoPoster from "../assets/services/images/doctor-video-poster.png";
+
 
 export default function FullPage() {
   return (
@@ -73,46 +76,45 @@ export default function FullPage() {
       </section>
 
       {/* ================= HOW TO GET STARTED ================= */}
-      <section className="bg-[#F7FAFF] py-24">
-        <div className="max-w-7xl mx-auto px-6">
+       <section className="bg-[#F7FAFF] py-24">
+  <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-center text-3xl md:text-4xl font-bold mb-20">
-            How to Get Started with ABA Therapy
-          </h2>
+    <h2 className="text-center text-3xl md:text-4xl font-bold mb-20">
+      How to Get Started with ABA Therapy
+    </h2>
 
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
+    <div className="grid lg:grid-cols-2 gap-20 items-start">
 
-            {/* VIDEO */}
-            <div className="flex justify-center">
-              <div className="relative max-w-md w-full rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/doctor-video.jpg"
-                  alt="BCBA explaining ABA therapy process"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl text-2xl text-[#0B5ED7]">
-                    ▶
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* VIDEO */}
+      <div className="flex justify-center">
+        <div className="relative max-w-md w-full rounded-3xl overflow-hidden shadow-2xl">
 
-            {/* STEPS */}
-            <div className="space-y-5">
-              <ToggleItem number="1" title="Complete the Intake Form" content="Share your child’s developmental history, routines, preferences, and family information." />
-              <ToggleItem number="2" title="Schedule an Initial Consultation" content="Our team schedules a meeting to understand your concerns and explain the process." />
-              <ToggleItem number="3" title="BCBA Assessment" content="A Board-Certified Behavior Analyst conducts a comprehensive skills and behavior assessment." />
-              <ToggleItem number="4" title="Personalized Treatment Plan" content="An individualized ABA therapy plan is created based on assessment results." />
-              <ToggleItem number="5" title="Family Review & Approval" content="You review and approve the treatment plan before implementation." />
-              <ToggleItem number="6" title="Insurance Authorization" content="We submit the plan for insurance approval, typically completed in 2–4 weeks." />
-              <ToggleItem number="7" title="Begin In-Home Therapy" content="Therapy sessions begin in your home with trained behavior technicians." />
-              <ToggleItem number="8" title="Ongoing Support & Monitoring" content="Continuous supervision, progress tracking, and parent collaboration." />
-            </div>
+          <video
+            src={doctorVideo}
+            poster={videoPoster}
+            controls
+            className="w-full h-full object-cover"
+          />
 
-          </div>
         </div>
-      </section>
+      </div>
+
+      {/* STEPS */}
+      <div className="space-y-5">
+        <ToggleItem number="1" title="Complete the Intake Form" content="Share your child’s developmental history, routines, preferences, and family information." />
+        <ToggleItem number="2" title="Schedule an Initial Consultation" content="Our team schedules a meeting to understand your concerns and explain the process." />
+        <ToggleItem number="3" title="BCBA Assessment" content="A Board-Certified Behavior Analyst conducts a comprehensive skills and behavior assessment." />
+        <ToggleItem number="4" title="Personalized Treatment Plan" content="An individualized ABA therapy plan is created based on assessment results." />
+        <ToggleItem number="5" title="Family Review & Approval" content="You review and approve the treatment plan before implementation." />
+        <ToggleItem number="6" title="Insurance Authorization" content="We submit the plan for insurance approval, typically completed in 2–4 weeks." />
+        <ToggleItem number="7" title="Begin In-Home Therapy" content="Therapy sessions begin in your home with trained behavior technicians." />
+        <ToggleItem number="8" title="Ongoing Support & Monitoring" content="Continuous supervision, progress tracking, and parent collaboration." />
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* ================= AREAS OF EXPERTISE ================= */}
       <section className="bg-white py-28">

@@ -1,6 +1,9 @@
  import React from "react";
 import { Link } from "react-router-dom";
 
+/* ===== IMPORT IMAGE MANUALLY ===== */
+import aboutImg from "../assets/about/about-preview.jpg";
+
 export default function AboutPreview() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#F5F9FF] via-white to-[#EEF4FF]">
@@ -54,13 +57,13 @@ export default function AboutPreview() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative bg-white/70 backdrop-blur-xl rounded-[32px] shadow-2xl p-4">
               <img
-                src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074"
+                src={aboutImg}
                 alt="ABA therapist smiling in clinic"
                 className="
-                  rounded-[28px] 
+                  rounded-[28px]
                   object-cover
                   w-full max-w-sm sm:max-w-md
-                  lg:w-120 lg:max-w-xl
+                  lg:max-w-xl
                 "
               />
             </div>

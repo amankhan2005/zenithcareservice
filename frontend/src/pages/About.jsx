@@ -22,7 +22,7 @@ export default function About() {
   }, []);
 
   const finalAddress =
-    mapAddress || "849 Fairmount Ave, Suite 200-T8, Towson, MD 21286";
+    mapAddress || " XYZ Street, Suite 100, City, State, ZIP";
 
   return (
     <div className="bg-white text-gray-800">

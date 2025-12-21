@@ -18,9 +18,9 @@ export default function Footer() {
   const logoUrl = defaultLogo;
 
   // -------- DEFAULT VALUES --------
-  const defaultEmail = "info@pr5-heartsnetwork.com";
-  const defaultPhone = "+1 (443) 992-2299";
-  const defaultAddress = "4919 Harford Rd, Baltimore, MD 21214";
+  const defaultEmail = "info@decoderhealth.com";
+  const defaultPhone = "+1 (571) 530-9004";
+  const defaultAddress = " XYZ Street, Suite 100, City, State, ZIP";
   const defaultAddressLink = "https://maps.app.goo.gl/mBkEdBxhhbThS67q7";
 
   const address = settings?.address || defaultAddress;
@@ -68,8 +68,11 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/85">
             <li><a href="/" className="hover:text-white">Home</a></li>
             <li><a href="/about-us" className="hover:text-white">About Us</a></li>
+            <li><a href="/team" className="hover:text-white">Team</a></li>
+            <li><a href="/careers" className="hover:text-white">Career</a></li>
+             <li><a href="/faq" className="hover:text-white">FAQs</a></li>
             <li><a href="/contact-us" className="hover:text-white">Contact</a></li>
-            <li><a href="/faq" className="hover:text-white">FAQs</a></li>
+            
           </ul>
         </div>
 
@@ -79,9 +82,10 @@ export default function Footer() {
             Services
           </h3>
           <ul className="space-y-2 text-sm text-white/85">
-            <li><a href="/services/rc" className="hover:text-white">Respite Care (RC)</a></li>
-            <li><a href="/services/iiss" className="hover:text-white">IISS</a></li>
-            <li><a href="/services/fc" className="hover:text-white">Family Consultation (FC)</a></li>
+            <li><a href="/services/culturally-responsive-care" className="hover:text-white">Culturally Responsive Care</a></li>
+            <li><a href="/services/compassion-respect" className="hover:text-white">Compassion & Respect</a></li>
+            <li><a href="/services/evidence-based-aba" className="hover:text-white">Evidence-Based ABA</a></li>
+             <li><a href="/services/flexible-support" className="hover:text-white">Flexible Support</a></li>
           </ul>
         </div>
 

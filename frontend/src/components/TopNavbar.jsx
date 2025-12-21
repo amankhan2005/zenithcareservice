@@ -10,9 +10,9 @@ export default function TopNavbar() {
 
   const address =
     settings?.address ||
-    "849 Fairmount Ave, Suite 200-T8, Towson, MD, 21286";
-  const phone = settings?.phone || "(410) 905-5477";
-  const email = settings?.email || "info@autismabapartners.com";
+    " XYZ Street, Suite 100, City, State, ZIP";
+  const phone = settings?.phone || "+1 (571) 530-9004";
+  const email = settings?.email || "info@decoderhealth.com";
 
   const facebook = settings?.facebook || "";
   const instagram = settings?.instagram || "";

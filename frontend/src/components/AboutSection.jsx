@@ -1,5 +1,9 @@
  import React from "react";
 
+/* ===== MANUAL IMAGE IMPORTS ===== */
+import aboutImg1 from "../assets/about/about-1.jpg";
+import aboutImg2 from "../assets/about/about-2.jpg";
+
 export default function AboutSection() {
   return (
     <section className="py-20 bg-white">
@@ -7,19 +11,7 @@ export default function AboutSection() {
 
         {/* ===== PILL HEADING ===== */}
         <div className="flex justify-center mb-6">
-          <span
-            className="
-              inline-flex items-center justify-center
-              px-10 py-2
-              rounded-full
-              border border-[#CFE0FF]
-              bg-[#F7FAFF]
-              text-[#0B5ED7]
-              text-sm
-              font-semibold
-              tracking-wide
-            "
-          >
+          <span className="inline-flex items-center justify-center px-10 py-2 rounded-full border border-[#CFE0FF] bg-[#F7FAFF] text-[#0B5ED7] text-sm font-semibold tracking-wide">
             What We Specialize In
           </span>
         </div>
@@ -42,7 +34,7 @@ export default function AboutSection() {
 
           <div className="rounded-3xl overflow-hidden shadow-lg">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
+              src={aboutImg1}
               alt="ABA therapy session with child"
               className="w-full h-full object-cover"
             />
@@ -98,7 +90,7 @@ export default function AboutSection() {
 
           <div className="rounded-3xl overflow-hidden shadow-lg">
             <img
-              src="https://images.unsplash.com/photo-1596495578065-9b4fdfb0e8b0?auto=format&fit=crop&w=1200&q=80"
+              src={aboutImg2}
               alt="Home-based ABA therapy"
               className="w-full h-full object-cover"
             />

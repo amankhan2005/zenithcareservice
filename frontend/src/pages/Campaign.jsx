@@ -286,7 +286,7 @@ export default function Campaign() {
             </div>
 
           </div>
-        </div>
+        </div>                                       
       </section>
 
       {/* ================= DONATE CTA ================= */}
@@ -321,7 +321,7 @@ export default function Campaign() {
             Email: info@decoderhealth.com
           </p>
         </div>
-      </section> */}
+      </section> */}                                 
 
       {/* ================= BOARD SECTION ================= */}
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
