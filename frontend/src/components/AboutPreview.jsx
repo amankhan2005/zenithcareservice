@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 /* ===== IMPORT IMAGE MANUALLY ===== */
-import aboutImg from "../assets/about/about-preview.jpg";
+import aboutImg from "../assets/about/about-preview.avif";
 
 export default function AboutPreview() {
   return (
