@@ -22,7 +22,7 @@ export default function Footer() {
   const youtube = "https://www.youtube.com/@DecoderHealth";
 
   // -------- DEFAULT VALUES (UPDATED) --------
-  const defaultEmail = "info@gentleheartshealth.com";
+  const defaultEmail = "info@gentleheartshomehealthcare.com";
   const defaultPhone = "+1 (508) 873-5711";
   const defaultAddress =
     "231 Main Street, Cherry Valley, MA 01611, United States";

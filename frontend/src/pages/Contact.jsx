@@ -8,7 +8,7 @@ export default function ContactUs() {
 
   /* ===== UPDATED DEFAULT CONTACT DETAILS ===== */
   const CONTACT_EMAIL =
-    settings?.email || "info@gentleheartshealth.com";
+    settings?.email || "info@gentleheartshomehealthcare.com";
 
   const CONTACT_PHONE =
     settings?.phone || "+1 (508) 873-5711";
