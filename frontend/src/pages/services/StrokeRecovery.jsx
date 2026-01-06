@@ -1,118 +1,225 @@
  import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import {
+  Activity,
+  Brain,
+  ShieldCheck,
+  HeartHandshake,
+  Stethoscope,
+  ArrowRight,
+} from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function StrokeRecovery() {
   return (
-    <div className="bg-white">
+    <div className="bg-white text-gray-800 overflow-hidden">
 
-      {/* HERO */}
-      <section className="relative bg-[#AF3059] text-white">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[70vh] flex items-center">
         <img
           src="https://images.pexels.com/photos/4167547/pexels-photo-4167547.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt=""
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold"
+        <div className="absolute inset-0 bg-[#AF3059]/80" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
-            Stroke Recovery & Neuro-Rehabilitation
-          </motion.h1>
-          <p className="mt-6 text-lg max-w-2xl text-white/90">
-            Private-pay, physician-informed in-home rehabilitation focused on restoring
-            independence, mobility, speech, and confidence after stroke or neurological injury.
-          </p>
+            <span className="inline-flex items-center gap-2 bg-white/15 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur">
+              <Brain className="w-4 h-4" />
+              Specialized Neuro-Rehabilitation
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
+              Stroke Recovery & <br /> Neuro-Rehabilitation
+            </h1>
+
+            <p className="mt-6 text-lg text-white/90 leading-relaxed">
+              Physician-informed, private-pay in-home rehabilitation designed to
+              restore independence, confidence, and quality of life after stroke
+              or neurological injury.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* CONTENT */}
+      {/* ================= CONTENT ================= */}
       <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6 space-y-10">
+        <div className="max-w-6xl mx-auto px-6 space-y-20">
 
-          <motion.img
-            src="https://images.pexels.com/photos/7551617/pexels-photo-7551617.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            className="rounded-3xl shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* IMAGE + INTRO */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-          />
+            variants={fadeUp}
+            transition={{ duration: 0.7 }}
+            className="grid md:grid-cols-2 gap-14 items-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/7551617/pexels-photo-7551617.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              className="rounded-3xl shadow-2xl"
+              alt=""
+            />
 
-          <div className="space-y-6 text-gray-700 leading-relaxed">
-            <p>
-              Stroke recovery is a deeply personal and complex journey that requires
-              specialized, consistent, and compassionate care. At Gentle Hearts Home
-              Health Care Agency, our Stroke Recovery & Neuro-Rehabilitation services
-              are designed to support patients in regaining function, confidence,
-              and quality of life — all within the comfort and familiarity of home.
-            </p>
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-gray-900">
+                Personalized Stroke Recovery at Home
+              </h2>
 
-            <p>
-              Our private-pay model allows us to deliver highly personalized,
-              one-on-one rehabilitation without insurance restrictions. Care plans
-              are thoughtfully designed in collaboration with physicians, therapists,
-              and families to ensure clinical accuracy and meaningful progress.
-            </p>
+              <p>
+                Stroke recovery is a deeply personal journey that requires
+                consistency, expertise, and compassion. At Gentle Hearts Home
+                Health Care Agency, we deliver individualized rehabilitation
+                within the comfort and familiarity of home.
+              </p>
 
-            <p>
-              We focus on improving mobility, balance, speech, coordination, and
-              cognitive function through structured, evidence-based techniques.
-              Equally important, we understanding the emotional and psychological
-              impact of stroke — providing encouragement, patience, and reassurance
-              throughout recovery.
-            </p>
+              <p>
+                Our private-pay model removes insurance limitations — allowing
+                one-on-one attention, flexible scheduling, and physician-aligned
+                care plans tailored to meaningful recovery.
+              </p>
 
-            <h3 className="text-2xl font-semibold text-gray-900">
+              <p>
+                We support not only physical rehabilitation, but emotional
+                reassurance and confidence-building throughout the recovery
+                process.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* ================= WHAT'S INCLUDED ================= */}
+          <div>
+            <motion.h3
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-3xl font-bold text-gray-900 text-center mb-12"
+            >
               What Our Stroke Recovery Care Includes
-            </h3>
+            </motion.h3>
 
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Physical, occupational, and speech rehabilitation support</li>
-              <li>Mobility, balance, and strength training</li>
-              <li>Neurological recovery-focused care planning</li>
-              <li>Medication reminders and safety monitoring</li>
-              <li>Caregiver education and home safety guidance</li>
-              <li>Ongoing physician communication and progress tracking</li>
-            </ul>
-
-            <p>
-              Our goal is not just physical recovery, but restoring independence,
-              dignity, and confidence — helping patients move forward with clarity
-              and peace of mind.
-            </p>
-          </div>
-
-          {/* FAQ */}
-          <div className="pt-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              Stroke Recovery – Frequently Asked Questions
-            </h3>
-
-            <div className="space-y-4">
-              <p><strong>How soon after a stroke can home rehabilitation begin?</strong><br />
-              Rehabilitation can often begin shortly after hospital discharge,
-              depending on physician guidance and patient stability.</p>
-
-              <p><strong>Is stroke recovery care customized?</strong><br />
-              Yes. Every care plan is individualized based on medical condition,
-              goals, and progress.</p>
-
-              <p><strong>Do you coordinate with doctors?</strong><br />
-              Absolutely. Our team works closely with physicians and therapists
-              throughout the recovery process.</p>
-
-              <p><strong>Is this service covered by insurance?</strong><br />
-              Gentle Hearts provides private-pay services, allowing greater
-              flexibility and personalization of care.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: Activity,
+                  title: "Physical & Mobility Rehabilitation",
+                  desc: "Strength, balance, coordination, and mobility-focused therapy.",
+                },
+                {
+                  icon: Brain,
+                  title: "Neurological Recovery Planning",
+                  desc: "Care plans designed around stroke-specific neurological needs.",
+                },
+                {
+                  icon: Stethoscope,
+                  title: "Physician-Informed Care",
+                  desc: "Ongoing coordination with doctors and therapists.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Medication & Safety Monitoring",
+                  desc: "Medication reminders and home safety oversight.",
+                },
+                {
+                  icon: HeartHandshake,
+                  title: "Caregiver Education",
+                  desc: "Guidance and education for family and caregivers.",
+                },
+                {
+                  icon: Activity,
+                  title: "Progress Tracking",
+                  desc: "Regular assessments and recovery milestone reviews.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#AF3059]/10 text-[#AF3059] mb-4">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
 
-          <NavLink
-            to="/contact"
-            className="inline-block mt-10 bg-[#AF3059] text-white px-10 py-4 rounded-full font-semibold"
+          {/* ================= FAQ ================= */}
+          <div>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8">
+              Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "How soon after a stroke can home rehabilitation begin?",
+                  a: "Rehabilitation can often begin shortly after hospital discharge, depending on physician guidance and patient stability.",
+                },
+                {
+                  q: "Is stroke recovery care customized?",
+                  a: "Yes. Every care plan is personalized based on medical condition, goals, and recovery progress.",
+                },
+                {
+                  q: "Do you coordinate with physicians?",
+                  a: "Absolutely. Our team maintains active communication with doctors and therapists.",
+                },
+                {
+                  q: "Is this service covered by insurance?",
+                  a: "Gentle Hearts provides private-pay services, allowing greater flexibility and personalization.",
+                },
+              ].map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                >
+                  <p className="font-semibold text-gray-900 mb-2">
+                    {faq.q}
+                  </p>
+                  <p className="text-gray-600">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= CTA ================= */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center pt-10"
           >
-            Request Private-Pay Consultation
-          </NavLink>
+            <NavLink
+              to="/contact-us"
+              className="inline-flex items-center gap-3 bg-[#AF3059] text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-[1.02] transition"
+            >
+              Request Private-Pay Consultation
+              <ArrowRight className="w-5 h-5" />
+            </NavLink>
+          </motion.div>
 
         </div>
       </section>

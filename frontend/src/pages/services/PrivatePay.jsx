@@ -1,65 +1,225 @@
-import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import {
+  ShieldCheck,
+  CalendarClock,
+  ClipboardList,
+  Crown,
+  Users,
+  ArrowRight,
+} from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function PrivatePay() {
   return (
-    <div className="bg-white">
+    <div className="bg-white text-gray-800 overflow-hidden">
 
-      <section className="relative bg-[#AF3059] text-white">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[70vh] flex items-center">
         <img
           src="https://images.pexels.com/photos/3825584/pexels-photo-3825584.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
-          alt="Private Pay Care"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="Private Pay Home Health Care"
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-bold">
-            Private-Pay Home Health Care Model
-          </motion.h1>
-          <p className="mt-6 text-lg max-w-2xl text-white/90">
-            A flexible, transparent approach to premium in-home care without
-            insurance limitations.
-          </p>
+        <div className="absolute inset-0 bg-[#AF3059]/80" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <span className="inline-flex items-center gap-2 bg-white/15 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur">
+              <Crown className="w-4 h-4" />
+              Premium Private-Pay Care Model
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
+              Private-Pay <br /> Home Health Care Model
+            </h1>
+
+            <p className="mt-6 text-lg text-white/90 leading-relaxed">
+              A flexible, transparent approach to high-touch in-home care —
+              without insurance restrictions or limitations.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-24 max-w-6xl mx-auto px-6 space-y-8 text-gray-700 leading-relaxed">
-        <p>
-          Our private-pay model is designed for families who value flexibility,
-          personalization, and quality. By eliminating insurance constraints,
-          we are able to design care plans that truly reflect patient needs and goals.
-        </p>
+      {/* ================= CONTENT ================= */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-6 space-y-20">
 
-        <p>
-          Private-pay care allows for longer visits, customized schedules, and
-          premium services that are often unavailable through traditional
-          insurance-based models.
-        </p>
+          {/* IMAGE + INTRO */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.7 }}
+            className="grid md:grid-cols-2 gap-14 items-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/3825588/pexels-photo-3825588.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              className="rounded-3xl shadow-2xl"
+              alt="Personalized private pay care"
+            />
 
-        <h3 className="text-2xl font-semibold text-gray-900">
-          Benefits of the Private-Pay Model
-        </h3>
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-gray-900">
+                Care Designed Around You — Not Insurance
+              </h2>
 
-        <ul className="list-disc pl-6 space-y-2">
-          <li>No insurance restrictions or approvals</li>
-          <li>Fully customized care plans</li>
-          <li>Transparent pricing</li>
-          <li>Priority scheduling</li>
-          <li>Higher continuity of care</li>
-        </ul>
+              <p>
+                Our private-pay model is built for families who value
+                flexibility, personalization, and premium service quality.
+                By eliminating insurance constraints, we design care plans
+                that reflect real needs and goals.
+              </p>
 
-        <h3 className="text-3xl font-bold mt-12">Private-Pay FAQs</h3>
-        <p><strong>Why choose private-pay?</strong><br />
-        It allows for greater flexibility and personalization.</p>
+              <p>
+                This model allows for longer visits, customized schedules,
+                and enhanced services that are often unavailable through
+                insurance-based care.
+              </p>
 
-        <p><strong>Is pricing transparent?</strong><br />
-        Yes, all costs are discussed upfront.</p>
+              <p>
+                Families benefit from transparency, continuity, and direct
+                collaboration with our care team.
+              </p>
+            </div>
+          </motion.div>
 
-        <p><strong>Can care change over time?</strong><br />
-        Absolutely. Care plans evolve with patient needs.</p>
+          {/* ================= BENEFITS ================= */}
+          <div>
+            <motion.h3
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-3xl font-bold text-gray-900 text-center mb-12"
+            >
+              Benefits of the Private-Pay Model
+            </motion.h3>
 
-        <NavLink to="/contact" className="inline-block mt-10 bg-[#AF3059] text-white px-10 py-4 rounded-full font-semibold">
-          Request Consultation
-        </NavLink>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: ShieldCheck,
+                  title: "No Insurance Restrictions",
+                  desc: "Care without approvals, caps, or coverage limitations.",
+                },
+                {
+                  icon: ClipboardList,
+                  title: "Fully Customized Care Plans",
+                  desc: "Services tailored precisely to individual needs.",
+                },
+                {
+                  icon: CalendarClock,
+                  title: "Priority Scheduling",
+                  desc: "Flexible scheduling and extended visit durations.",
+                },
+                {
+                  icon: Crown,
+                  title: "Premium Service Quality",
+                  desc: "Higher continuity, consistency, and attention.",
+                },
+                {
+                  icon: Users,
+                  title: "Transparent Pricing",
+                  desc: "Clear, upfront discussions with no hidden costs.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Care That Evolves",
+                  desc: "Plans adjust as needs change over time.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#AF3059]/10 text-[#AF3059] mb-4">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= FAQ ================= */}
+          <div>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8">
+              Private-Pay – Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Why choose private-pay care?",
+                  a: "Private-pay allows greater flexibility, personalization, and higher service quality.",
+                },
+                {
+                  q: "Is pricing transparent?",
+                  a: "Yes. All pricing and services are discussed clearly upfront.",
+                },
+                {
+                  q: "Can care plans change over time?",
+                  a: "Absolutely. Care plans evolve as patient needs change.",
+                },
+                {
+                  q: "Is private-pay short-term or long-term?",
+                  a: "Both options are available depending on care needs.",
+                },
+              ].map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                >
+                  <p className="font-semibold text-gray-900 mb-2">
+                    {faq.q}
+                  </p>
+                  <p className="text-gray-600">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= CTA ================= */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center pt-10"
+          >
+            <NavLink
+              to="/contact-us"
+              className="inline-flex items-center gap-3 bg-[#AF3059] text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-[1.02] transition"
+            >
+              Request Private-Pay Consultation
+              <ArrowRight className="w-5 h-5" />
+            </NavLink>
+          </motion.div>
+
+        </div>
       </section>
     </div>
   );

@@ -1,82 +1,225 @@
  import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import {
+  Brain,
+  HeartHandshake,
+  ShieldCheck,
+  Users,
+  Activity,
+  ArrowRight,
+} from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function DementiaCare() {
   return (
-    <div className="bg-white">
+    <div className="bg-white text-gray-800 overflow-hidden">
 
-      {/* HERO */}
-      <section className="relative bg-[#AF3059] text-white">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[70vh] flex items-center">
         <img
           src="https://images.pexels.com/photos/3396209/pexels-photo-3396209.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt=""
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-bold">
-            Dementia & Alzheimer’s Care
-          </motion.h1>
-          <p className="mt-6 text-lg max-w-2xl text-white/90">
-            Compassionate, memory-focused in-home care designed to support safety,
-            routine, dignity, and emotional well-being.
-          </p>
+        <div className="absolute inset-0 bg-[#AF3059]/80" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <span className="inline-flex items-center gap-2 bg-white/15 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur">
+              <Brain className="w-4 h-4" />
+              Memory-Focused In-Home Care
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
+              Dementia & <br /> Alzheimer’s Care
+            </h1>
+
+            <p className="mt-6 text-lg text-white/90 leading-relaxed">
+              Compassionate, structured, and dignity-centered in-home care designed
+              to support memory, safety, routine, and emotional well-being.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* CONTENT */}
+      {/* ================= CONTENT ================= */}
       <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6 space-y-8 text-gray-700 leading-relaxed">
-          <p>
-            Dementia and Alzheimer’s disease affect not only memory, but also
-            emotional stability, behavior, and daily functioning. At Gentle Hearts,
-            our dementia care services are designed to provide calm, consistent,
-            and respectful support within the comfort of home.
-          </p>
+        <div className="max-w-6xl mx-auto px-6 space-y-20">
 
-          <p>
-            Familiar surroundings play a critical role in reducing confusion and
-            anxiety. Our caregivers help maintain routines that promote comfort,
-            recognition, and a sense of control while supporting daily activities
-            with patience and compassion.
-          </p>
+          {/* IMAGE + INTRO */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.7 }}
+            className="grid md:grid-cols-2 gap-14 items-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/7551756/pexels-photo-7551756.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              className="rounded-3xl shadow-2xl"
+              alt=""
+            />
 
-          <p>
-            We work closely with families to understand personal history,
-            preferences, and triggers. This allows us to deliver care that feels
-            familiar, respectful, and emotionally reassuring.
-          </p>
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-gray-900">
+                Calm, Familiar & Respectful Dementia Care
+              </h2>
 
-          <h3 className="text-2xl font-semibold text-gray-900">
-            Dementia Care Services Include
-          </h3>
+              <p>
+                Dementia and Alzheimer’s disease affect memory, behavior, and
+                emotional stability. At Gentle Hearts Home Health Care Agency, we
+                provide consistent and reassuring support within the comfort of
+                familiar surroundings.
+              </p>
 
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Daily routine and memory support</li>
-            <li>Safety supervision and monitoring</li>
-            <li>Cognitive engagement activities</li>
-            <li>Behavioral support and reassurance</li>
-            <li>Family communication and guidance</li>
-          </ul>
+              <p>
+                Maintaining daily routines and a familiar environment helps
+                reduce confusion and anxiety. Our caregivers focus on safety,
+                emotional reassurance, and dignity at every stage of care.
+              </p>
 
-          {/* FAQ */}
-          <h3 className="text-3xl font-bold text-gray-900 mt-12">
-            Dementia Care – FAQs
-          </h3>
+              <p>
+                We work closely with families to understand personal history,
+                preferences, and triggers — ensuring care feels respectful,
+                comforting, and familiar.
+              </p>
+            </div>
+          </motion.div>
 
-          <p><strong>Can dementia care be provided at home?</strong><br />
-          Yes. Home-based dementia care often improves comfort and reduces confusion.</p>
+          {/* ================= WHAT'S INCLUDED ================= */}
+          <div>
+            <motion.h3
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-3xl font-bold text-gray-900 text-center mb-12"
+            >
+              What Our Dementia Care Includes
+            </motion.h3>
 
-          <p><strong>How do you manage behavioral changes?</strong><br />
-          Care is delivered with patience, routine, and personalized behavioral strategies.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: Brain,
+                  title: "Memory & Routine Support",
+                  desc: "Daily structure and guidance to support memory and familiarity.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Safety Monitoring",
+                  desc: "Supervision to reduce risks and ensure a safe environment.",
+                },
+                {
+                  icon: Activity,
+                  title: "Cognitive Engagement",
+                  desc: "Activities designed to stimulate cognition and connection.",
+                },
+                {
+                  icon: HeartHandshake,
+                  title: "Behavioral Support",
+                  desc: "Calm reassurance and personalized behavioral strategies.",
+                },
+                {
+                  icon: Users,
+                  title: "Family Communication",
+                  desc: "Ongoing updates, guidance, and collaborative care planning.",
+                },
+                {
+                  icon: Brain,
+                  title: "Long-Term or Short-Term Care",
+                  desc: "Flexible care plans based on evolving needs.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#AF3059]/10 text-[#AF3059] mb-4">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
-          <p><strong>Are families involved?</strong><br />
-          Absolutely. Families are included in care planning and updates.</p>
+          {/* ================= FAQ ================= */}
+          <div>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8">
+              Dementia Care – Frequently Asked Questions
+            </h3>
 
-          <p><strong>Is dementia care long-term?</strong><br />
-          Care can be short-term or long-term depending on needs.</p>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Can dementia care be provided at home?",
+                  a: "Yes. Home-based dementia care often improves comfort, familiarity, and emotional stability.",
+                },
+                {
+                  q: "How do you manage behavioral changes?",
+                  a: "Care is delivered with patience, routine, and personalized behavioral strategies.",
+                },
+                {
+                  q: "Are families involved in care planning?",
+                  a: "Absolutely. Families are actively included in care decisions and updates.",
+                },
+                {
+                  q: "Is dementia care long-term?",
+                  a: "Care may be short-term or long-term depending on the individual’s needs.",
+                },
+              ].map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                >
+                  <p className="font-semibold text-gray-900 mb-2">
+                    {faq.q}
+                  </p>
+                  <p className="text-gray-600">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <NavLink to="/contact" className="inline-block mt-10 bg-[#AF3059] text-white px-10 py-4 rounded-full font-semibold">
-            Request Consultation
-          </NavLink>
+          {/* ================= CTA ================= */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center pt-10"
+          >
+            <NavLink
+              to="/contact-us"
+              className="inline-flex items-center gap-3 bg-[#AF3059] text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-[1.02] transition"
+            >
+              Request Private-Pay Consultation
+              <ArrowRight className="w-5 h-5" />
+            </NavLink>
+          </motion.div>
+
         </div>
       </section>
     </div>

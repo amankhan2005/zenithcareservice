@@ -21,16 +21,16 @@ export default function Footer() {
   // -------- STATIC YOUTUBE --------
   const youtube = "https://www.youtube.com/@DecoderHealth";
 
-  // -------- DEFAULT VALUES --------
+  // -------- DEFAULT VALUES (UPDATED) --------
   const defaultEmail = "info@gentleheartshealth.com";
-  const defaultPhone = "(571) 606-3898";
-  const defaultAddress = "Aldie, Virginia";
-  const defaultAddressLink = "https://maps.app.goo.gl/f7tX5prHV9WJkJMRA";
+  const defaultPhone = "+1 (508) 873-5711";
+  const defaultAddress =
+    "231 Main Street, Cherry Valley, MA 01611, United States";
 
   const address = settings?.address || defaultAddress;
-  const addressLink = settings?.address
-    ? `https://maps.google.com/?q=${encodeURIComponent(settings.address)}`
-    : defaultAddressLink;
+  const addressLink = `https://maps.google.com/?q=${encodeURIComponent(
+    address
+  )}`;
 
   const phone = settings?.phone || defaultPhone;
   const phoneHref = `tel:${phone.replace(/[^0-9+]/g, "")}`;
@@ -45,22 +45,24 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#AF3059] text-white relative pt-24 pb-10">
-
       {/* TOP ACCENT */}
       <div className="absolute top-0 left-0 w-full h-1 bg-white/80" />
 
       {/* MAIN GRID */}
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-16">
-
         {/* LOGO + TAGLINE */}
         <div>
-          <div className=" p-4    inline-block mb-4">
-            <img src={logoUrl} alt="Gentle Hearts Logo" className="w-32 rounded-2xl h-auto" />
+          <div className="inline-block mb-4">
+            <img
+              src={logoUrl}
+              alt="Gentle Hearts Logo"
+              className="w-32 rounded-2xl h-auto"
+            />
           </div>
 
           <p className="text-sm text-white/85 leading-relaxed">
-            Providing compassionate, private-pay in-home nursing and rehabilitation
-            services focused on dignity, trust, and clinical excellence.
+            Providing compassionate, private-pay in-home health care focused on
+            dignity, trust, and clinical excellence.
           </p>
         </div>
 
@@ -72,9 +74,8 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/85">
             <li><a href="/" className="hover:text-white">Home</a></li>
             <li><a href="/about-us" className="hover:text-white">About Us</a></li>
-            <li><a href="/services" className="hover:text-white">Services</a></li>
-            <li><a href="/faq" className="hover:text-white">FAQs</a></li>
-            <li><a href="/contact" className="hover:text-white">Contact Us</a></li>
+             <li><a href="/faq" className="hover:text-white">FAQs</a></li>
+            <li><a href="/contact-us" className="hover:text-white">Contact Us</a></li>
           </ul>
         </div>
 
@@ -102,7 +103,12 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-white/85">
             <li className="flex gap-3">
               <FaMapMarkerAlt className="text-lg flex-shrink-0 mt-0.5" />
-              <a href={addressLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a
+                href={addressLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
                 {address}
               </a>
             </li>
@@ -116,7 +122,10 @@ export default function Footer() {
 
             <li className="flex gap-3">
               <FaRegEnvelope className="text-lg flex-shrink-0 mt-0.5" />
-              <a href={`mailto:${cleanedEmail}`} className="hover:text-white">
+              <a
+                href={`mailto:${cleanedEmail}`}
+                className="hover:text-white"
+              >
                 {cleanedEmail}
               </a>
             </li>
@@ -130,7 +139,7 @@ export default function Footer() {
           </h3>
 
           <p className="text-sm text-white/85 mb-4">
-            Updates, care tips, and community stories.
+            Updates, care insights, and community stories.
           </p>
 
           <div className="flex gap-3">

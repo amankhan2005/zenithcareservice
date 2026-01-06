@@ -1,97 +1,223 @@
-import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import {
+  Crown,
+  HeartHandshake,
+  Users,
+  CalendarClock,
+  Utensils,
+  ArrowRight,
+} from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function ConciergeCare() {
   return (
-    <div className="bg-white">
+    <div className="bg-white text-gray-800 overflow-hidden">
 
-      {/* HERO */}
-      <section className="relative bg-[#AF3059] text-white">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[70vh] flex items-center">
         <img
           src="https://images.pexels.com/photos/4860423/pexels-photo-4860423.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
-          alt="Concierge Care"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="Concierge Care Services"
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold"
+        <div className="absolute inset-0 bg-[#AF3059]/80" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 text-white">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
-            Concierge & White-Glove Add-On Services
-          </motion.h1>
-          <p className="mt-6 text-lg max-w-2xl text-white/90">
-            Premium, personalized support services designed to elevate the
-            in-home care experience with comfort, flexibility, and attention to detail.
-          </p>
+            <span className="inline-flex items-center gap-2 bg-white/15 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur">
+              <Crown className="w-4 h-4" />
+              Premium White-Glove Support
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
+              Concierge & <br /> White-Glove Add-On Services
+            </h1>
+
+            <p className="mt-6 text-lg text-white/90 leading-relaxed">
+              Elevated, personalized in-home support designed to enhance comfort,
+              flexibility, and peace of mind beyond traditional care.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* CONTENT */}
+      {/* ================= CONTENT ================= */}
       <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6 space-y-8 text-gray-700 leading-relaxed">
-          <p>
-            Our Concierge & White-Glove Add-On Services are designed for families
-            seeking an elevated level of comfort, convenience, and personalized
-            attention. These services complement our clinical care offerings,
-            providing holistic support that goes beyond traditional home health care.
-          </p>
+        <div className="max-w-6xl mx-auto px-6 space-y-20">
 
-          <p>
-            From extended care visits to lifestyle assistance, our concierge
-            services allow patients and families to focus on healing and peace of
-            mind. Every detail is thoughtfully handled to reduce stress and
-            enhance daily comfort.
-          </p>
-
-          <p>
-            These services are ideal for individuals with complex needs,
-            high expectations for service quality, or families who desire frequent
-            updates and hands-on support.
-          </p>
-
-          <h3 className="text-2xl font-semibold text-gray-900">
-            Concierge Services May Include
-          </h3>
-
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Extended visit durations for enhanced support</li>
-            <li>Lifestyle and wellness assistance</li>
-            <li>Transportation coordination</li>
-            <li>Meal planning and daily activity support</li>
-            <li>Frequent family communication and updates</li>
-            <li>Customized schedules and flexible care plans</li>
-          </ul>
-
-          <p>
-            By removing everyday burdens, our concierge services allow families
-            to focus on meaningful time together while ensuring high-quality,
-            attentive care at all times.
-          </p>
-
-          {/* FAQ */}
-          <h3 className="text-3xl font-bold text-gray-900 mt-12">
-            Concierge Care – FAQs
-          </h3>
-
-          <p><strong>What makes concierge care different?</strong><br />
-          Concierge care offers extended, premium support beyond standard services.</p>
-
-          <p><strong>Can concierge services be combined with nursing care?</strong><br />
-          Yes, they are designed to complement clinical care.</p>
-
-          <p><strong>Is scheduling flexible?</strong><br />
-          Absolutely. Services are tailored to your preferences.</p>
-
-          <p><strong>Is concierge care short-term or long-term?</strong><br />
-          Both options are available depending on needs.</p>
-
-          <NavLink
-            to="/contact"
-            className="inline-block mt-10 bg-[#AF3059] text-white px-10 py-4 rounded-full font-semibold"
+          {/* IMAGE + INTRO */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.7 }}
+            className="grid md:grid-cols-2 gap-14 items-center"
           >
-            Request Consultation
-          </NavLink>
+            <img
+              src="https://images.pexels.com/photos/4860425/pexels-photo-4860425.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              className="rounded-3xl shadow-2xl"
+              alt="Luxury in-home concierge care"
+            />
+
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-gray-900">
+                Elevated Support Beyond Traditional Home Care
+              </h2>
+
+              <p>
+                Our Concierge & White-Glove Add-On Services are designed for
+                individuals and families seeking an exceptional level of comfort,
+                convenience, and personal attention.
+              </p>
+
+              <p>
+                These services complement our clinical offerings, allowing
+                patients to focus on healing while we manage day-to-day details
+                with discretion and care.
+              </p>
+
+              <p>
+                Ideal for complex needs, high service expectations, or families
+                who desire frequent updates and hands-on support.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* ================= WHAT'S INCLUDED ================= */}
+          <div>
+            <motion.h3
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-3xl font-bold text-gray-900 text-center mb-12"
+            >
+              What Our Concierge Services Include
+            </motion.h3>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: CalendarClock,
+                  title: "Extended Visit Durations",
+                  desc: "Longer care visits for enhanced attention and comfort.",
+                },
+                {
+                  icon: HeartHandshake,
+                  title: "Lifestyle & Wellness Assistance",
+                  desc: "Daily support tailored to personal routines and preferences.",
+                },
+                {
+                  icon: Users,
+                  title: "Transportation Coordination",
+                  desc: "Assistance with appointments and essential travel.",
+                },
+                {
+                  icon: Utensils,
+                  title: "Meal Planning & Daily Support",
+                  desc: "Nutrition-focused planning and everyday assistance.",
+                },
+                {
+                  icon: Crown,
+                  title: "Customized Schedules",
+                  desc: "Flexible care plans aligned with your lifestyle.",
+                },
+                {
+                  icon: Users,
+                  title: "Frequent Family Updates",
+                  desc: "Clear, consistent communication and updates.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#AF3059]/10 text-[#AF3059] mb-4">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= FAQ ================= */}
+          <div>
+            <h3 className="text-3xl font-bold text-gray-900 mb-8">
+              Concierge Care – Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "What makes concierge care different?",
+                  a: "Concierge care provides extended, premium support beyond standard home care services.",
+                },
+                {
+                  q: "Can concierge services be combined with nursing care?",
+                  a: "Yes. These services are designed to complement clinical and nursing care.",
+                },
+                {
+                  q: "Is scheduling flexible?",
+                  a: "Absolutely. Concierge services are fully customized to individual preferences.",
+                },
+                {
+                  q: "Is concierge care short-term or long-term?",
+                  a: "Both options are available depending on care needs.",
+                },
+              ].map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                >
+                  <p className="font-semibold text-gray-900 mb-2">
+                    {faq.q}
+                  </p>
+                  <p className="text-gray-600">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ================= CTA ================= */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center pt-10"
+          >
+            <NavLink
+              to="/contact-us"
+              className="inline-flex items-center gap-3 bg-[#AF3059] text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-[1.02] transition"
+            >
+              Request Private-Pay Consultation
+              <ArrowRight className="w-5 h-5" />
+            </NavLink>
+          </motion.div>
+
         </div>
       </section>
     </div>

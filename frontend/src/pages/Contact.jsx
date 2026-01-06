@@ -6,13 +6,22 @@ import { useSettings } from "../context/SettingsContext";
 export default function ContactUs() {
   const { settings } = useSettings();
 
-  const CONTACT_EMAIL = settings?.email || "info@gentlehearts.com";
-  const CONTACT_PHONE = settings?.phone || "(571) 606-3898";
-  const CONTACT_ADDRESS = settings?.address || "Massachusetts, USA";
+  /* ===== UPDATED DEFAULT CONTACT DETAILS ===== */
+  const CONTACT_EMAIL =
+    settings?.email || "info@gentleheartshealth.com";
+
+  const CONTACT_PHONE =
+    settings?.phone || "+1 (508) 873-5711";
+
+  const CONTACT_ADDRESS =
+    settings?.address ||
+    "231 Main Street, Cherry Valley, MA 01611, United States";
 
   const MAP_LINK =
     settings?.mapLink ||
     `https://maps.google.com/?q=${encodeURIComponent(CONTACT_ADDRESS)}`;
+
+  const phoneHref = `tel:${CONTACT_PHONE.replace(/[^0-9+]/g, "")}`;
 
   const [form, setForm] = useState({
     firstName: "",
@@ -55,7 +64,8 @@ export default function ContactUs() {
 
     try {
       const API_BASE =
-        import.meta.env.VITE_API_URL || "https://decoderhealth-cfkr.onrender.com";
+        import.meta.env.VITE_API_URL ||
+        "https://decoderhealth-cfkr.onrender.com";
 
       const res = await fetch(`${API_BASE}/api/contact`, {
         method: "POST",
@@ -86,13 +96,11 @@ export default function ContactUs() {
 
   return (
     <main className="relative overflow-hidden bg-[#FFF5F8] py-28">
-
       {/* SOFT GLOW */}
       <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-[#AF3059]/10 rounded-full blur-[140px]" />
       <div className="absolute bottom-0 -right-40 w-[520px] h-[520px] bg-[#AF3059]/10 rounded-full blur-[140px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -109,30 +117,34 @@ export default function ContactUs() {
           </h1>
 
           <p className="text-lg text-gray-600">
-            Our private-pay care team is here to support you with clarity and compassion.
+            Our private-pay care team is here to support you with clarity,
+            compassion, and professionalism.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-14 items-start">
-
           {/* CONTACT INFO */}
           <div className="space-y-6">
-            {[{
-              icon: Mail,
-              label: "Email",
-              value: CONTACT_EMAIL,
-              link: `mailto:${CONTACT_EMAIL}`,
-            },{
-              icon: Phone,
-              label: "Phone",
-              value: CONTACT_PHONE,
-              link: `tel:${CONTACT_PHONE}`,
-            },{
-              icon: MapPin,
-              label: "Location",
-              value: CONTACT_ADDRESS,
-              link: MAP_LINK,
-            }].map((item, i) => {
+            {[
+              {
+                icon: Mail,
+                label: "Email",
+                value: CONTACT_EMAIL,
+                link: `mailto:${CONTACT_EMAIL}`,
+              },
+              {
+                icon: Phone,
+                label: "Phone",
+                value: CONTACT_PHONE,
+                link: phoneHref,
+              },
+              {
+                icon: MapPin,
+                label: "Location",
+                value: CONTACT_ADDRESS,
+                link: MAP_LINK,
+              },
+            ].map((item, i) => {
               const Icon = item.icon;
               return (
                 <motion.a
@@ -140,6 +152,7 @@ export default function ContactUs() {
                   whileHover={{ y: -4 }}
                   href={item.link}
                   target={i === 2 ? "_blank" : undefined}
+                  rel={i === 2 ? "noopener noreferrer" : undefined}
                   className="block bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
                 >
                   <div className="flex gap-4">
@@ -148,7 +161,9 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">{item.label}</p>
-                      <p className="font-semibold text-gray-900">{item.value}</p>
+                      <p className="font-semibold text-gray-900">
+                        {item.value}
+                      </p>
                     </div>
                   </div>
                 </motion.a>
@@ -176,15 +191,46 @@ export default function ContactUs() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
-
               <div className="grid md:grid-cols-2 gap-6">
-                <input name="firstName" placeholder="First Name" required onChange={handleChange} className="input" />
-                <input name="lastName" placeholder="Last Name" required onChange={handleChange} className="input" />
+                <input
+                  name="firstName"
+                  placeholder="First Name"
+                  required
+                  onChange={handleChange}
+                  className="input"
+                />
+                <input
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                  onChange={handleChange}
+                  className="input"
+                />
               </div>
 
-              <input name="email" type="email" placeholder="Email" required onChange={handleChange} className="input" />
-              <input name="phone" placeholder="Phone" required onChange={handleChange} className="input" />
-              <textarea name="message" rows="4" placeholder="Your Message" required onChange={handleChange} className="input resize-none" />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+                onChange={handleChange}
+                className="input"
+              />
+              <input
+                name="phone"
+                placeholder="Phone"
+                required
+                onChange={handleChange}
+                className="input"
+              />
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Your Message"
+                required
+                onChange={handleChange}
+                className="input resize-none"
+              />
 
               {/* CAPTCHA */}
               <div className="bg-[#AF3059]/5 border border-[#AF3059]/20 rounded-xl p-5">
