@@ -42,20 +42,22 @@ app.use(limiter);
 // ---------------------- CORS SETUP ----------------------
 // Allowed origins list (add more domains via ALLOWED_ORIGINS env comma-separated)
  const allowedOrigins = [
+  // 🔹 Local development
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:3000",
 
- 
+  // 🔹 Production domains
+  "https://gentleheartshha.com",
+  "https://www.gentleheartshha.com",
   "https://gentleheartshomecare.netlify.app",
 
-  "https://gentleheartshomecare.com",
-  "https://www.gentleheartshomecare.com",
-
+  // 🔹 From environment variable (optional)
   ...(process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(",").map((u) => u.trim())
     : []),
 ].filter(Boolean);
+
 
 
 /**
