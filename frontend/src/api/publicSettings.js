@@ -1,15 +1,32 @@
-// src/api/publicSettings.js
+ // src/api/publicSettings.js
 
-// Correct BASE URL → only /api
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
+// ✅ ONLY env-based API (NO localhost fallback)
+const API_BASE = import.meta.env.VITE_API_URL;
 
-export const SERVER_BASE = API_BASE.replace("/api", ""); // this is fine
+if (!API_BASE) {
+  throw new Error("VITE_API_URL is not defined");
+}
+
+// Normalize: ensure no trailing slash
+const NORMALIZED_BASE = API_BASE.replace(/\/$/, "");
+
+// Optional (agar kahin aur use hota ho)
+export const SERVER_BASE = NORMALIZED_BASE;
 
 async function fetchJson(path, opts = {}) {
-  const res = await fetch(`${API_BASE}${path}`, opts);
+  const res = await fetch(`${NORMALIZED_BASE}/api${path}`, {
+    ...opts,
+    headers: {
+      "Content-Type": "application/json",
+      ...(opts.headers || {}),
+    },
+  });
+
   const text = await res.text();
 
-  if (!res.ok) throw new Error(text);
+  if (!res.ok) {
+    throw new Error(text || "Request failed");
+  }
 
   try {
     return JSON.parse(text);
@@ -18,7 +35,7 @@ async function fetchJson(path, opts = {}) {
   }
 }
 
-// Correct endpoint: /settings → NOT /api/settings/settings
+// ✅ Correct endpoint → /api/settings
 export async function fetchSettings() {
   return fetchJson("/settings");
 }

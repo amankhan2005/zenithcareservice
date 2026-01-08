@@ -18,7 +18,7 @@ export default function Footer() {
   const logoUrl = defaultLogo;
 
   // -------- DEFAULT VALUES --------
-  const defaultEmail = "info@gentleheartshomehealthcare.com";
+  const defaultEmail = "info@gentleheartshha.com";
   const defaultPhone = "+1 (508) 873-5711";
   const defaultAddress =
     "231 Main Street, Cherry Valley, MA 01611, United States";
