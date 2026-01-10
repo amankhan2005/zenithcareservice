@@ -46,7 +46,7 @@ export default function About() {
             </h1>
 
             <p className="mt-6 text-lg text-white/90 max-w-xl">
-              Gentle Hearts Home Health Care Agency delivers refined, private-pay
+              Gentle Hearts Home Health Care  delivers refined, private-pay
               in-home nursing and rehabilitation services designed around dignity,
               comfort, and clinical excellence.
             </p>
@@ -93,7 +93,7 @@ export default function About() {
             </h2>
 
             <p className="text-lg text-gray-600 mb-4">
-              Gentle Hearts Home Health Care Agency is a private-pay home health
+              Gentle Hearts Home Health Care  is a private-pay home health
               care provider serving individuals and families who seek a higher
               standard of in-home nursing and rehabilitation.
             </p>

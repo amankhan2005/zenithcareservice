@@ -179,7 +179,7 @@ export default function Footer() {
 
       {/* BOTTOM BAR */}
       <div className="border-t border-white/20 mt-16 pt-6 text-center text-sm text-white/70">
-        © {new Date().getFullYear()} Gentle Hearts Home Health Care Agency.  
+        © {new Date().getFullYear()} Gentle Hearts Home Health Care .  
         {" "}Developed by{" "}
         <a
           href="https://www.webieapp.com/"

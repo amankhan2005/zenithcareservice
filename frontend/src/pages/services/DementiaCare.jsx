@@ -87,7 +87,7 @@ export default function DementiaCare() {
 
               <p>
                 Dementia and Alzheimer’s disease affect memory, behavior, and
-                emotional stability. At Gentle Hearts Home Health Care Agency, we
+                emotional stability. At Gentle Hearts Home Health Care , we
                 provide consistent and reassuring support within familiar
                 surroundings.
               </p>
