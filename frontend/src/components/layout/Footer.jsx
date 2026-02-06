@@ -31,7 +31,7 @@ export default function Footer() {
 
         <Link
           to="/contact-us"
-          className="inline-block bg-white text-sky-600 px-7 py-3 rounded-full font-semibold hover:scale-105 transition"
+          className="inline-block bg-white text-pink-500 px-7 py-3 rounded-full font-semibold hover:scale-105 transition"
         >
           Contact Us Now →
         </Link>
