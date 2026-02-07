@@ -7,11 +7,11 @@ export default function ContactUs() {
   const { settings } = useSettings();
 
   /* ================= CONTACT DETAILS ================= */
-  const CONTACT_EMAIL = settings?.email || "info@gentleheartshha.com";
-  const CONTACT_PHONE = settings?.phone || "+1 (508) 873-5711";
+  const CONTACT_EMAIL = settings?.email || "info@zenithcareservices.com";
+  const CONTACT_PHONE = settings?.phone || "240-274-8822";
   const CONTACT_ADDRESS =
     settings?.address ||
-    "231 Main Street, Cherry Valley, MA 01611, United States";
+    "703 Rainbow Ct, Edgewood, MD 21040";
 
   const MAP_LINK =
     settings?.mapLink ||
@@ -67,26 +67,17 @@ export default function ContactUs() {
     setSuccess(false);
 
     const API_BASE =
-  import.meta.env.VITE_API_URL || "https://hearthomeagency.onrender.com";
-
-
-    // ⏱️ timeout safety
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+      import.meta.env.VITE_API_URL ||
+      "https://hearthomeagency.onrender.com";
 
     try {
       const res = await fetch(`${API_BASE}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
-        signal: controller.signal,
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data?.message || "Failed to send message");
-      }
+      if (!res.ok) throw new Error("Failed to send message");
 
       setSuccess(true);
       setForm({
@@ -99,23 +90,55 @@ export default function ContactUs() {
 
       regenerateCaptcha();
     } catch (err) {
-      if (err.name === "AbortError") {
-        setError("Server is taking too long. Please try again.");
-      } else {
-        setError(err.message || "Something went wrong.");
-      }
+      setError("Something went wrong. Please try again.");
     } finally {
-      clearTimeout(timeout);
       setLoading(false);
     }
   }
 
   return (
-    <main className="bg-[#FFF5F8] py-20 overflow-x-hidden">
+    <main className="bg-gradient-to-br from-pink-50 via-white to-blue-50 py-28 font-[Poppins]">
+
+
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* ================= CONTACT INFO ================= */}
-          <div className="space-y-5">
+
+
+        {/* ================= HERO ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-24"
+        >
+
+          <p className="text-pink-400 font-semibold mb-3 tracking-wide">
+            Zenith Care Services
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-5 leading-tight">
+
+            Get In{" "}
+            <span className="italic font-serif text-blue-400">
+              Touch
+            </span>{" "}
+            With Us
+
+          </h1>
+
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            We’re here to support your healthcare needs with
+            compassion, professionalism, and trusted nursing care.
+          </p>
+
+        </motion.div>
+
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+
+          {/* ================= INFO ================= */}
+          <div className="space-y-6">
+
+
             {[
               {
                 icon: Mail,
@@ -137,39 +160,44 @@ export default function ContactUs() {
               },
             ].map((item, i) => {
               const Icon = item.icon;
+
               return (
                 <a
                   key={i}
                   href={item.link}
                   target={i === 2 ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="bg-white rounded-2xl border p-5 flex gap-4 shadow"
+                  className="bg-white rounded-2xl p-6 shadow-lg border hover:shadow-xl transition flex gap-4 items-center"
                 >
-                  <div className="w-11 h-11 bg-[#AF3059] rounded-xl flex items-center justify-center">
+
+                  <div className="w-12 h-12 bg-gradient-to-r from-pink-400 to-blue-400 rounded-xl flex items-center justify-center">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
+
                   <div>
-                    <p className="text-xs text-gray-500">{item.label}</p>
-                    {item.label === "Location" ? (
-                      <p className="text-sm font-medium">
-                        231 Main Street,<br />Cherry Valley, MA 01611
-                      </p>
-                    ) : (
-                      <p className="text-sm font-medium whitespace-nowrap">
-                        {item.value}
-                      </p>
-                    )}
+                    <p className="text-xs text-gray-500 mb-1">
+                      {item.label}
+                    </p>
+
+                    <p className="text-sm font-medium text-gray-900">
+                      {item.value}
+                    </p>
                   </div>
+
                 </a>
               );
             })}
+
           </div>
 
+
           {/* ================= FORM ================= */}
-          <div className="lg:col-span-2 bg-white rounded-3xl p-8 shadow-xl">
+          <div className="lg:col-span-2 bg-white rounded-3xl p-10 shadow-2xl border">
+
+
             {success && (
-              <div className="mb-4 flex items-center gap-2 bg-green-50 text-green-700 p-3 rounded-lg">
-                <CheckCircle className="w-5 h-5" />
+              <div className="mb-4 bg-green-50 text-green-700 p-3 rounded-lg flex items-center gap-2">
+                <CheckCircle size={18} />
                 Message sent successfully.
               </div>
             )}
@@ -180,8 +208,12 @@ export default function ContactUs() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+
+
               <div className="grid sm:grid-cols-2 gap-4">
+
                 <input
                   name="firstName"
                   placeholder="First Name"
@@ -190,6 +222,7 @@ export default function ContactUs() {
                   value={form.firstName}
                   className="input"
                 />
+
                 <input
                   name="lastName"
                   placeholder="Last Name"
@@ -198,72 +231,93 @@ export default function ContactUs() {
                   value={form.lastName}
                   className="input"
                 />
+
               </div>
+
 
               <input
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="Email Address"
                 required
                 onChange={handleChange}
                 value={form.email}
                 className="input"
               />
+
               <input
                 name="phone"
-                placeholder="Phone"
+                placeholder="Phone Number"
                 required
                 onChange={handleChange}
                 value={form.phone}
                 className="input"
               />
 
+
               <textarea
                 name="message"
                 rows="4"
-                placeholder="Your Message"
+                placeholder="Write your message..."
                 required
                 onChange={handleChange}
                 value={form.message}
                 className="input resize-none"
               />
 
+
               {/* CAPTCHA */}
-              <div className="bg-[#AF3059]/5 p-4 rounded-xl">
+              <div className="bg-pink-50 p-4 rounded-xl">
+
                 <p className="text-sm font-semibold mb-2">
                   Security Check: {num1} + {num2} = ?
                 </p>
+
                 <input
                   value={captcha}
                   onChange={(e) => setCaptcha(e.target.value)}
                   className="input"
                 />
+
               </div>
 
+
+              {/* BUTTON */}
               <button
                 disabled={!captchaValid || loading}
-                className="w-full bg-[#AF3059] text-white py-4 rounded-xl font-semibold flex justify-center gap-2 disabled:opacity-60"
+                className="w-full bg-blue-400 text-white py-4 rounded-xl font-semibold flex justify-center gap-2 hover:opacity-90 transition disabled:opacity-60"
               >
                 {loading ? "Sending..." : "Send Message"}
-                <Send className="w-5 h-5" />
+                <Send size={18} />
               </button>
+
             </form>
+
           </div>
+
         </div>
+
       </div>
 
+
+      {/* INPUT STYLE */}
       <style>{`
         .input {
           width: 100%;
           border: 1px solid #E5E7EB;
           border-radius: 0.75rem;
           padding: 0.9rem 1rem;
+          transition: all 0.2s ease;
+          font-family: Poppins, sans-serif;
         }
+
         .input:focus {
-          border-color: #AF3059;
+          border-color: #f472b6;
+          box-shadow: 0 0 0 2px rgba(244,114,182,0.25);
           outline: none;
         }
       `}</style>
+
     </main>
   );
 }
