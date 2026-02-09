@@ -160,7 +160,7 @@ export const applyNurse = async (req, res) => {
 
           <p>
             <b>Zenithcare Team</b><br/>
-            www.gentleheartshha.com
+            www.zenithcareservice.org
           </p>
 
         </div>
