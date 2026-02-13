@@ -15,16 +15,16 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/faq";
 
-// Services Pages
-import RN from "./pages/services/RN";
-import LPN from "./pages/services/LPN";
-import GNA from "./pages/services/GNA";
-import CNA from "./pages/services/CNA";
-import PTOT from "./pages/services/PTOT";
+// ✅ New Services Pages
+import SkilledNursingStaffing from "./pages/services/SkilledNursingStaffing";
+import HomeCare from "./pages/services/HomeCare";
+import PediatricNursing from "./pages/services/PediatricNursing";
+import GeriatricNursing from "./pages/services/GeriatricNursing";
+import SpecializedCare from "./pages/services/SpecializedCare";
 
 // Forms
 import RequestNurse from "./forms/RequestNurse";
-import ApplyNurse from "./forms/ApplyNurse";  
+import ApplyNurse from "./forms/ApplyNurse";
 
 export default function App() {
   return (
@@ -44,15 +44,34 @@ export default function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
 
-        {/* Career Page (ApplyNurse) */}
+        {/* Career Page */}
         <Route path="/careers" element={<ApplyNurse />} />
 
-        {/* Service Pages */}
-        <Route path="/services/rn" element={<RN />} />
-        <Route path="/services/lpn" element={<LPN />} />
-        <Route path="/services/gna" element={<GNA />} />
-        <Route path="/services/cna" element={<CNA />} />
-        <Route path="/services/ptot" element={<PTOT />} />
+        {/* ✅ New Service Pages */}
+        <Route
+          path="/services/staffing"
+          element={<SkilledNursingStaffing />}
+        />
+
+        <Route
+          path="/services/home-care"
+          element={<HomeCare />}
+        />
+
+        <Route
+          path="/services/pediatric"
+          element={<PediatricNursing />}
+        />
+
+        <Route
+          path="/services/geriatric"
+          element={<GeriatricNursing />}
+        />
+
+        <Route
+          path="/services/specialized"
+          element={<SpecializedCare />}
+        />
 
         {/* Client Form */}
         <Route path="/request-nurse" element={<RequestNurse />} />

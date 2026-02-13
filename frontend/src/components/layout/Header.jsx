@@ -11,31 +11,21 @@ import { HiMenu, HiX } from "react-icons/hi";
 
 import logo from "../../assets/logo.png";
 
-
 export default function Header() {
 
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const [servicesOpen, setServicesOpen] = useState(false); // Desktop
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // Mobile
-
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const dropdownRef = useRef(null);
 
-
   /* Close desktop dropdown on outside click */
-
   useEffect(() => {
 
     function handleOutside(e) {
-
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setServicesOpen(false);
       }
-
     }
 
     document.addEventListener("mousedown", handleOutside);
@@ -54,7 +44,6 @@ export default function Header() {
 
 
   /* Close mobile menu when route changes */
-
   const closeMobile = () => {
     setMobileOpen(false);
     setMobileServicesOpen(false);
@@ -124,9 +113,7 @@ export default function Header() {
             <div className="relative" ref={dropdownRef}>
 
               <button
-                onClick={() =>
-                  setServicesOpen(!servicesOpen)
-                }
+                onClick={() => setServicesOpen(!servicesOpen)}
                 className="
                   flex items-center gap-1
                   font-medium text-[#1F2933]
@@ -148,32 +135,32 @@ export default function Header() {
 
                 <div
                   className="
-                    absolute left-0 top-full mt-4 w-72
-                    bg-white/80 backdrop-blur-xl
+                    absolute left-0 top-full mt-4 w-80
+                    bg-white/90 backdrop-blur-xl
                     rounded-2xl shadow-xl
                     border border-white/50
                     overflow-hidden
                   "
                 >
 
-                  <DropLink to="/services/rn" setOpen={setServicesOpen}>
-                    Registered Nurse
+                  <DropLink to="/services/staffing" setOpen={setServicesOpen}>
+                    Skilled Nursing Staffing
                   </DropLink>
 
-                  <DropLink to="/services/lpn" setOpen={setServicesOpen}>
-                    Licensed Practical Nurse
+                  <DropLink to="/services/home-care" setOpen={setServicesOpen}>
+                    Home-Based Nursing Care
                   </DropLink>
 
-                  <DropLink to="/services/gna" setOpen={setServicesOpen}>
-                    GNA
+                  <DropLink to="/services/pediatric" setOpen={setServicesOpen}>
+                    Pediatric Nursing
                   </DropLink>
 
-                  <DropLink to="/services/cna" setOpen={setServicesOpen}>
-                    CNA
+                  <DropLink to="/services/geriatric" setOpen={setServicesOpen}>
+                    Geriatric Nursing
                   </DropLink>
 
-                  <DropLink to="/services/ptot" setOpen={setServicesOpen}>
-                    PT / OT
+                  <DropLink to="/services/specialized" setOpen={setServicesOpen}>
+                    Specialized Care
                   </DropLink>
 
                 </div>
@@ -282,34 +269,23 @@ export default function Header() {
             <nav className="flex flex-col gap-5 mt-4">
 
 
-              <MobileLink to="/" close={closeMobile}>
-                Home
-              </MobileLink>
+              <MobileLink to="/" close={closeMobile}>Home</MobileLink>
 
-              <MobileLink to="/about-us" close={closeMobile}>
-                About Us
-              </MobileLink>
+              <MobileLink to="/about-us" close={closeMobile}>About Us</MobileLink>
 
 
               {/* MOBILE SERVICES */}
               <div>
 
                 <button
-                  onClick={() =>
-                    setMobileServicesOpen(!mobileServicesOpen)
-                  }
-                  className="
-                    flex justify-between w-full
-                    font-medium text-[#1F2933]
-                  "
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="flex justify-between w-full font-medium text-[#1F2933]"
                 >
                   Services
 
                   <FaChevronDown
                     className={`transition ${
-                      mobileServicesOpen
-                        ? "rotate-180"
-                        : ""
+                      mobileServicesOpen ? "rotate-180" : ""
                     }`}
                   />
 
@@ -321,40 +297,26 @@ export default function Header() {
                   <div className="ml-4 mt-3 space-y-2 text-sm">
 
 
-                    <MobileServiceLink
-                      to="/services/rn"
-                      close={closeMobile}
-                    >
-                      RN
+                    <MobileServiceLink to="/services/staffing" close={closeMobile}>
+                      Skilled Nursing Staffing
                     </MobileServiceLink>
 
-                    <MobileServiceLink
-                      to="/services/lpn"
-                      close={closeMobile}
-                    >
-                      LPN
+                    <MobileServiceLink to="/services/home-care" close={closeMobile}>
+                      Home-Based Nursing Care
                     </MobileServiceLink>
 
-                    <MobileServiceLink
-                      to="/services/gna"
-                      close={closeMobile}
-                    >
-                      GNA
+                    <MobileServiceLink to="/services/pediatric" close={closeMobile}>
+                      Pediatric Nursing
                     </MobileServiceLink>
 
-                    <MobileServiceLink
-                      to="/services/cna"
-                      close={closeMobile}
-                    >
-                      CNA
+                    <MobileServiceLink to="/services/geriatric" close={closeMobile}>
+                      Geriatric Nursing
                     </MobileServiceLink>
 
-                    <MobileServiceLink
-                      to="/services/ptot"
-                      close={closeMobile}
-                    >
-                      PT / OT
+                    <MobileServiceLink to="/services/specialized" close={closeMobile}>
+                      Specialized Care
                     </MobileServiceLink>
+
 
                   </div>
 
@@ -363,21 +325,13 @@ export default function Header() {
               </div>
 
 
-              <MobileLink to="/faq" close={closeMobile}>
-                FAQ
-              </MobileLink>
+              <MobileLink to="/faq" close={closeMobile}>FAQ</MobileLink>
 
-              <MobileLink to="/careers" close={closeMobile}>
-                Career
-              </MobileLink>
+              <MobileLink to="/careers" close={closeMobile}>Career</MobileLink>
 
-              <MobileLink to="/contact-us" close={closeMobile}>
-                Contact
-              </MobileLink>
+              <MobileLink to="/contact-us" close={closeMobile}>Contact</MobileLink>
 
-              <MobileLink to="/request-nurse" close={closeMobile}>
-                Find Care
-              </MobileLink>
+              <MobileLink to="/request-nurse" close={closeMobile}>Find Care</MobileLink>
 
 
             </nav>

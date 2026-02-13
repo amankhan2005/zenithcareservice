@@ -39,30 +39,31 @@ export default function Hero() {
             space-y-6
           "
         >
-          {/* Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#1F2933] leading-tight tracking-tight">
+   {/* Heading */}
+<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#1F2933] leading-tight tracking-tight">
 
-            Trusted
+  Trusted
 
-            <span className="block font-serif italic font-medium text-[#E85C9A] mt-1">
-              In-Home Healthcare
-            </span>
+  <span className="block font-serif italic font-medium text-[#E85C9A] mt-1">
+    Nursing & Healthcare
+  </span>
 
-            <span className="block font-extrabold text-[#1F2933]">
-              Services
-            </span>
+  <span className="block font-extrabold text-[#1F2933]">
+    Solutions
+  </span>
 
-          </h1>
+</h1>
 
 
-          {/* Description */}
-          <p className="text-sm sm:text-base md:text-lg text-[#1F2933] leading-relaxed max-w-xl px-2 md:px-0">
+{/* Description */}
+<p className="text-sm sm:text-base md:text-lg text-[#1F2933] leading-relaxed max-w-xl px-2 md:px-0">
 
-              We provide skilled nurses and caregivers for home and
-            hospital care, ensuring safe, compassionate, and
-            personalized support for every family.
+  We provide skilled nursing, home care, pediatric, geriatric, and
+  specialized healthcare services with insurance and private pay
+  options for trusted, compassionate support.
 
-          </p>
+</p>
+
 
 
           {/* CTA Buttons */}

@@ -110,37 +110,42 @@ export default function FAQ() {
 
 
 /* FAQ DATA */
-const faqData = [
+ const faqData = [
   {
-    q: "How can I request a nurse or caregiver?",
-    a: "You can request a nurse by filling out the Request Nurse form or contacting our support team.",
+    q: "How can I request nursing or care services?",
+    a: "You can request services by filling out our Request Nurse form or by contacting our support team directly.",
   },
   {
     q: "What services does Zenith Care Services provide?",
-    a: "We provide RN, LPN, CNA, GNA, and PT/OT services for home and hospital care.",
+    a: "We provide skilled nursing staffing, home-based nursing care, pediatric nursing, geriatric care, and specialized healthcare services.",
   },
   {
-    q: "Are your nurses certified and verified?",
-    a: "Yes, all our professionals are licensed, trained, and background-verified.",
+    q: "Are your nurses and caregivers licensed and verified?",
+    a: "Yes, all our professionals are licensed, professionally trained, and background-verified.",
   },
   {
     q: "How quickly can I get a nurse after booking?",
-    a: "Usually within 24–48 hours after confirmation.",
+    a: "In most cases, we can arrange a qualified nurse or caregiver within 24 to 48 hours after confirmation.",
   },
   {
-    q: "Do you offer short-term and long-term care?",
-    a: "Yes, we offer flexible care plans based on patient needs.",
+    q: "Do you offer short-term and long-term care services?",
+    a: "Yes, we offer flexible short-term and long-term care plans based on each patient’s medical needs.",
+  },
+  {
+    q: "Do you accept insurance and private pay?",
+    a: "Yes, we accept all major insurance plans as well as private pay options for our services.",
   },
   {
     q: "How can I apply for a nursing job?",
-    a: "You can apply through our Careers page by submitting your documents.",
+    a: "You can apply through our Careers page by submitting your application and required documents.",
   },
   {
     q: "How much do your services cost?",
-    a: "Pricing depends on service type and duration. Contact us for a quote.",
+    a: "Pricing depends on the type of care, duration, and medical requirements. Contact us for a personalized quote.",
   },
   {
-    q: "How can I contact support?",
-    a: "You can reach us via Contact page, phone, or email anytime.",
+    q: "How can I contact customer support?",
+    a: "You can reach our support team through the Contact page, phone, or email at any time.",
   },
 ];
+

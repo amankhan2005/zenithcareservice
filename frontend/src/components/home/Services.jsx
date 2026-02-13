@@ -12,42 +12,47 @@ import homeImg from "../../assets/home.jpg";
 export default function Services() {
 
   const services = [
-    {
-      title: "Registered Nurses (RN)",
-      desc: "Advanced medical care and health monitoring at home and in hospitals.",
+      {
+      title: "Skilled Nursing Staffing",
+      desc: "Professional nursing staff for hospitals, nursing homes, and long-term care facilities.",
       img: rnImg,
-      link: "/services/rn",
+      link: "/services/staffing",
     },
+
     {
-      title: "Licensed Practical Nurses (LPN)",
-      desc: "Professional bedside care including medication and wound support.",
+      title: "Home-Based Nursing Care",
+      desc: "Personalized medical care and recovery support in the comfort of your home.",
+      img: homeImg,
+      link: "/services/home-care",
+    },
+
+    {
+      title: "Pediatric Nursing Care",
+      desc: "Specialized nursing support for infants, children, and adolescents.",
       img: lpnImg,
-      link: "/services/lpn",
+      link: "/services/pediatric",
     },
+
     {
-      title: "Geriatric Nursing Assistants (GNA)",
-      desc: "Specialized elderly care for daily living and mobility support.",
+      title: "Geriatric Nursing Care",
+      desc: "Compassionate healthcare and daily support for senior patients.",
       img: gnaImg,
-      link: "/services/gna",
+      link: "/services/geriatric",
     },
+
     {
-      title: "Certified Nursing Assistants (CNA)",
-      desc: "Compassionate personal care focused on comfort and recovery.",
-      img: cnaImg,
-      link: "/services/cna",
-    },
-    {
-      title: "PT / OT Therapy",
-      desc: "Rehabilitation to improve strength, mobility, and independence.",
+      title: "Specialized Nursing Care",
+      desc: "Advanced care for critical, neurological, cardiac, and complex medical needs.",
       img: ptImg,
-      link: "/services/ptot",
+      link: "/services/specialized",
     },
-    
+
     {
-  title: "Contact Us",
-  desc: "Get in touch with our care team for personalized healthcare support.",
-img: homeImg,  link: "/contact-us",
-},
+      title: "Contact Us",
+      desc: "Get in touch with our care team for personalized healthcare support.",
+      img: cnaImg,
+      link: "/contact-us",
+    },
 
   ];
 

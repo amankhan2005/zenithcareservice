@@ -1,5 +1,5 @@
  import { motion } from "framer-motion";
-import { FaUserNurse, FaHeart, FaHospital } from "react-icons/fa";
+import { FaUserNurse, FaHeart, FaHospital, FaShieldAlt } from "react-icons/fa";
 
 export default function About() {
   return (
@@ -32,12 +32,11 @@ export default function About() {
           {/* Paragraph */}
           <p className="max-w-xl mx-auto mt-6 text-base text-black leading-relaxed">
 
-             Zenith Care Services provides skilled nurses and caregivers for home
-and hospital care. We are committed to delivering compassionate,
-reliable, and personalized healthcare solutions that support the
-comfort, safety, and well-being of every patient.
-
-
+            Zenith Care Services provides skilled nursing staffing, home-based
+            nursing care, pediatric, geriatric, and specialized healthcare
+            services. We are committed to delivering compassionate, reliable,
+            and personalized care while accepting major insurance plans and
+            private pay options for accessible healthcare.
 
           </p>
 
@@ -51,7 +50,7 @@ comfort, safety, and well-being of every patient.
 
             <ValueCard
               icon={<FaUserNurse />}
-              text="Skilled Nurses"
+              text="Expert Nursing Team"
             />
 
             <ValueCard
@@ -61,13 +60,15 @@ comfort, safety, and well-being of every patient.
 
             <ValueCard
               icon={<FaHospital />}
-              text="Home & Hospital Support"
+              text="Home & Facility Support"
             />
 
             <ValueCard
-              icon={<FaUserNurse />}
-              text="Personalized Treatment"
+              icon={<FaShieldAlt />}
+              text="Insurance Accepted"
             />
+
+         
 
           </div>
 
@@ -77,6 +78,7 @@ comfort, safety, and well-being of every patient.
     </motion.section>
   );
 }
+
 
 /* ================= Value Card ================= */
 

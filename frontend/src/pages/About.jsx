@@ -17,7 +17,6 @@ export default function About() {
       className="bg-white overflow-hidden"
     >
 
-
       {/* HERO SECTION */}
       <div className="max-w-7xl mx-auto px-4 pt-20">
 
@@ -33,7 +32,7 @@ export default function About() {
 
             {/* Tagline */}
             <p className="text-pink-500 font-semibold mb-4 relative z-10">
-              Professional Nursing & Home Healthcare Services
+              Trusted Nursing, Staffing & Home Healthcare Services
             </p>
 
 
@@ -41,9 +40,9 @@ export default function About() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#1f2937] mb-6">
 
               We are Committed <br />
-              to Delivering{" "}
+              to Providing{" "}
               <span className="font-serif italic font-medium">
-                Quality Care
+                Complete Care
               </span>
 
             </h1>
@@ -51,10 +50,13 @@ export default function About() {
 
             {/* Description */}
             <p className="text-gray-600 max-w-lg mb-8 relative z-10">
-              Zenith Care Services provides skilled nurses, caregivers,
-              and therapists for home and hospital care. We focus on
-              safety, compassion, and personalized healthcare solutions
-              to support patients and families at every stage.
+
+              Zenith Care Services delivers skilled nursing staffing,
+              home-based, pediatric, geriatric, and specialized healthcare
+              services for hospitals and families. We accept major insurance
+              plans and private pay options to ensure accessible,
+              compassionate, and personalized care.
+
             </p>
 
 
@@ -85,7 +87,7 @@ export default function About() {
       </div>
 
 
-      {/* OTHER SECTIONS (No Extra Gap) */}
+      {/* OTHER SECTIONS */}
       <WhyUs />
 
       <HomeCareCTA />

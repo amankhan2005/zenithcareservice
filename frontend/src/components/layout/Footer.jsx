@@ -105,43 +105,44 @@ export default function Footer() {
 
 
           {/* Services */}
-          <div>
-            <h4 className="font-semibold mb-4 text-black">Services</h4>
+<div>
+  <h4 className="font-semibold mb-4 text-black">Services</h4>
 
-            <ul className="space-y-2 text-sm text-gray-800">
+  <ul className="space-y-2 text-sm text-gray-800">
 
-              <li>
-                <Link to="/services/rn" className="hover:text-pink-500">
-                  Registered Nurses
-                </Link>
-              </li>
+    <li>
+      <Link to="/services/staffing" className="hover:text-pink-500">
+        Skilled Nursing Staffing
+      </Link>
+    </li>
 
-              <li>
-                <Link to="/services/lpn" className="hover:text-pink-500">
-                  Licensed Practical Nurses
-                </Link>
-              </li>
+    <li>
+      <Link to="/services/home-care" className="hover:text-pink-500">
+        Home-Based Nursing Care
+      </Link>
+    </li>
 
-              <li>
-                <Link to="/services/gna" className="hover:text-pink-500">
-                  GNA Services
-                </Link>
-              </li>
+    <li>
+      <Link to="/services/pediatric" className="hover:text-pink-500">
+        Pediatric Nursing
+      </Link>
+    </li>
 
-              <li>
-                <Link to="/services/cna" className="hover:text-pink-500">
-                  CNA Services
-                </Link>
-              </li>
+    <li>
+      <Link to="/services/geriatric" className="hover:text-pink-500">
+        Geriatric Nursing
+      </Link>
+    </li>
 
-              <li>
-                <Link to="/services/ptot" className="hover:text-pink-500">
-                  PT / OT
-                </Link>
-              </li>
+    <li>
+      <Link to="/services/specialized" className="hover:text-pink-500">
+        Specialized Care
+      </Link>
+    </li>
 
-            </ul>
-          </div>
+  </ul>
+</div>
+
 
 
           {/* Contact */}

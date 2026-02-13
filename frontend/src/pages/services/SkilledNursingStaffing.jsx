@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 
 // Hero Image
-import heroImg from "../../assets/lpn.jpg";
+import heroImg from "../../assets/rn.jpg";
 
-export default function LPN() {
+export default function SkilledNursingStaffing() {
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -23,25 +23,19 @@ export default function LPN() {
           <div>
 
             <p className="text-pink-500 font-semibold mb-4">
-              Professional Practical Nursing Services
+              Professional Healthcare Staffing
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#1f2937] mb-6">
-
-              Licensed <br />
-              Practical{" "}
-              <span className="font-serif italic font-medium">
-                Nursing Care
-              </span>
-
+              Skilled <br />
+              Nursing <span className="font-serif italic font-medium">Staffing</span>
             </h1>
 
 
             <p className="text-gray-600 max-w-lg mb-8">
-              Zenith Care Services provides qualified and experienced
-              Licensed Practical Nurses for home and hospital care.
-              Our LPNs deliver reliable daily medical support and
-              personalized patient assistance.
+              Zenith Care Services provides highly trained and experienced
+              skilled nursing professionals to post-acute and long-term
+              care facilities, nursing homes, and hospitals.
             </p>
 
 
@@ -51,7 +45,7 @@ export default function LPN() {
                 to="/request-nurse"
                 className="bg-pink-500 text-white px-7 py-3 rounded-full font-semibold hover:bg-pink-600 transition"
               >
-                Request a Nurse →
+                Request Staff →
               </Link>
 
               <Link
@@ -71,7 +65,7 @@ export default function LPN() {
 
             <img
               src={heroImg}
-              alt="Licensed Practical Nurse"
+              alt="Skilled Nursing Staffing"
               className="w-full rounded-3xl shadow-xl object-cover"
             />
 
@@ -88,40 +82,40 @@ export default function LPN() {
           <div className="bg-sky-50 p-8 rounded-2xl shadow">
 
             <h3 className="text-2xl font-bold mb-4 text-gray-900">
-              Our LPN Services
+              Our Staffing Services
             </h3>
 
             <ul className="space-y-3 text-gray-700">
 
-              <li>✔ Vital Signs Monitoring</li>
-              <li>✔ Daily Medical Assistance</li>
-              <li>✔ Medication Support</li>
-              <li>✔ Basic Treatments & Procedures</li>
-              <li>✔ Patient Mobility Support</li>
-              <li>✔ Personal Care Assistance</li>
-              <li>✔ Health Reporting to RNs & Doctors</li>
+              <li>✔ Skilled Nurses for Hospitals</li>
+              <li>✔ Staffing for Nursing Homes</li>
+              <li>✔ Post-Acute Care Support</li>
+              <li>✔ Long-Term Care Facilities</li>
+              <li>✔ Temporary & Permanent Placement</li>
+              <li>✔ Emergency Staffing Solutions</li>
+              <li>✔ 24/7 Professional Coverage</li>
 
             </ul>
 
           </div>
 
 
-          {/* Who Needs LPN */}
+          {/* Who Needs Staffing */}
           <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow">
 
             <h3 className="text-2xl font-bold mb-4 text-gray-900">
-              Who Can Benefit from Our LPNs?
+              Who Can Benefit from Our Services?
             </h3>
 
             <p className="text-gray-700 leading-relaxed mb-6">
-              Our Licensed Practical Nurses are ideal for patients
-              who require regular medical monitoring, daily support,
-              and routine nursing care.
+              Our skilled nursing staffing services are ideal for hospitals,
+              post-acute care centers, long-term care facilities, and
+              nursing homes that require reliable and qualified staff.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              They work under the supervision of Registered Nurses
-              and physicians to ensure safe and effective care.
+              We ensure continuity of care, improved patient outcomes,
+              and full compliance with healthcare standards.
             </p>
 
           </div>
@@ -133,7 +127,7 @@ export default function LPN() {
         <div className="max-w-5xl mx-auto mb-24">
 
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-900">
-            Licensed Practical Nurse (LPN) – FAQs
+            Skilled Nursing Staffing – FAQs
           </h2>
 
 
@@ -142,33 +136,21 @@ export default function LPN() {
 
             <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
               <summary className="font-semibold text-gray-900">
-                What services do your LPNs provide?
+                What facilities do you provide staffing for?
               </summary>
               <p className="mt-2 text-gray-600">
-                Our LPNs assist with medication support, vital signs
-                monitoring, basic treatments, daily care, and patient
-                assistance.
+                We provide skilled nursing staff to hospitals, nursing homes,
+                post-acute care centers, and long-term care facilities.
               </p>
             </details>
 
 
             <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
               <summary className="font-semibold text-gray-900">
-                Can I hire an LPN for home care?
+                Are your nurses licensed and verified?
               </summary>
               <p className="mt-2 text-gray-600">
-                Yes, we provide Licensed Practical Nurses for in-home
-                medical support and routine healthcare services.
-              </p>
-            </details>
-
-
-            <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
-              <summary className="font-semibold text-gray-900">
-                Are your LPNs certified and verified?
-              </summary>
-              <p className="mt-2 text-gray-600">
-                Yes, all our LPNs are licensed, background-checked,
+                Yes, all our nurses are licensed, background-checked,
                 and professionally trained.
               </p>
             </details>
@@ -176,22 +158,34 @@ export default function LPN() {
 
             <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
               <summary className="font-semibold text-gray-900">
-                Do you offer short-term and long-term LPN care?
+                Do you offer short-term and long-term staffing?
               </summary>
               <p className="mt-2 text-gray-600">
-                Yes, we provide flexible care plans for recovery,
-                rehabilitation, and long-term patient support.
+                Yes, we offer flexible short-term, long-term, and
+                permanent staffing solutions.
               </p>
             </details>
 
 
             <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
               <summary className="font-semibold text-gray-900">
-                How can I request an LPN?
+                Do you accept insurance and private pay?
               </summary>
               <p className="mt-2 text-gray-600">
-                You can request an LPN through our website form or
-                by contacting our support team.
+                Yes, we proudly accept all major insurance plans as well as
+                private pay options. Our team will help you verify coverage
+                and choose the best payment solution for your needs.
+              </p>
+            </details>
+
+
+            <details className="bg-gray-50 p-5 rounded-xl shadow cursor-pointer">
+              <summary className="font-semibold text-gray-900">
+                How can I request skilled nursing staff?
+              </summary>
+              <p className="mt-2 text-gray-600">
+                You can request staff through our website, by phone,
+                or by contacting our support team.
               </p>
             </details>
 
@@ -204,12 +198,12 @@ export default function LPN() {
         <div className="text-center">
 
           <h2 className="text-3xl font-bold mb-4 text-gray-900">
-            Need a Licensed Practical Nurse Today?
+            Need Skilled Nursing Staff Today?
           </h2>
 
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Our skilled LPNs are ready to provide safe, reliable,
-            and compassionate care for your loved ones.
+            Partner with Zenith Care Services for reliable, professional,
+            and compassionate nursing staffing solutions.
           </p>
 
 
@@ -219,7 +213,7 @@ export default function LPN() {
               to="/request-nurse"
               className="bg-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-pink-600 transition"
             >
-              Request an LPN →
+              Request Staff →
             </Link>
 
             <Link

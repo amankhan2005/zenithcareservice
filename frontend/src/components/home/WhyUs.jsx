@@ -7,27 +7,29 @@
 
 export default function PeaceOfMind() {
   const cards = [
-    {
-      icon: <FaUserShield />,
-      title: "Skilled & Trusted Staff",
-      desc: "All professionals are certified, trained, and verified to deliver safe and reliable care.",
-    },
-    {
-      icon: <FaSyncAlt />,
-      title: "Consistent Personal Care",
-      desc: "We provide dedicated caregivers who understand patient needs and preferences.",
-    },
-    {
-      icon: <FaPhoneAlt />,
-      title: "24/7 Support Service",
-      desc: "Our support team is available anytime to assist patients and families.",
-    },
-    {
-      icon: <FaHeart />,
-      title: "Compassionate Care",
-      desc: "Quality healthcare services for children, adults, seniors, and special care patients.",
-    },
-  ];
+  {
+    icon: <FaUserShield />,
+    title: "Skilled & Trusted Staff",
+    desc: "All our nurses and caregivers are licensed, trained, and verified to deliver safe and reliable healthcare services.",
+  },
+  
+  {
+    icon: <FaPhoneAlt />,
+    title: "24/7 Support Service",
+    desc: "Our support team is available 24/7 to assist patients, families, and healthcare partners at any time.",
+  },
+  {
+    icon: <FaHeart />,
+    title: "Comprehensive & Compassionate Care",
+    desc: "We provide home care, pediatric, geriatric, specialized nursing, and staffing services for all age groups.",
+  },
+  {
+    icon: <FaUserShield />,
+    title: "Insurance & Flexible Payment",
+    desc: "We accept all major insurance plans and private pay options, making quality healthcare accessible and affordable.",
+  },
+];
+
 
   return (
     <section className="py-24 bg-white">

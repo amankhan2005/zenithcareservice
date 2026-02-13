@@ -4,30 +4,28 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 export default function FAQ() {
   const faqs = [
   {
-    q: "What services does Zenithcare provide?",
-    a: "We provide certified nurses, nursing assistants, and therapists for home and hospital care.",
+    q: "What services does Zenith Care Services provide?",
+    a: "We provide skilled nursing staffing, home-based nursing care, pediatric nursing, geriatric care, and specialized nursing services for hospitals, facilities, and home patients.",
   },
   {
-    q: "How can I request a nurse or caregiver?",
-    a: "You can contact us through our website, phone, or WhatsApp to request care services.",
+    q: "How can I request nursing or care services?",
+    a: "You can request services through our website, by phone, or by contacting our support team for quick assistance.",
   },
   {
-    q: "Are your nurses and caregivers certified?",
-    a: "Yes, all our nurses and caregivers are certified, trained, and professionally verified.",
+    q: "Are your nurses and caregivers licensed and certified?",
+    a: "Yes, all our nurses and caregivers are licensed, professionally trained, and background-verified.",
   },
   {
-    q: "Will I get the same nurse for regular care?",
-    a: "We try our best to assign the same caregiver for consistent and personalized care.",
+    q: "Do you provide services for hospitals and nursing homes?",
+    a: "Yes, we offer skilled nursing staffing for hospitals, post-acute centers, long-term care facilities, and nursing homes.",
   },
   {
-    q: "How much do your services cost?",
-    a: "Pricing depends on the type of care, duration, and medical needs. Contact us for a custom quote.",
+    q: "Do you accept insurance and private pay?",
+    a: "Yes, we accept all major insurance plans as well as private pay options for our nursing services.",
   },
-  {
-    q: "How quickly can a nurse be assigned?",
-    a: "In most cases, we can arrange a qualified nurse within 24 to 48 hours.",
-  },
+ 
 ];
+
 
   const [openIndex, setOpenIndex] = useState(null);
 
