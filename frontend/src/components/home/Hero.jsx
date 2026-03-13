@@ -45,7 +45,7 @@ export default function Hero() {
   Provide nursing staffing &
 
   <span className="block font-serif italic font-medium text-[#E85C9A] mt-2">
-    Home healthcare for Pediatric Nursing
+    Home heath care for Adults and pediatric
   </span>
 
 </h1>
